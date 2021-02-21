@@ -415,7 +415,7 @@
               onkeypress="return event.keyCode != 13;">
             @csrf
 
-            <!-- psngr_dtls starts -->
+            <! -- psngr_dtls starts -->
             <section id="psngr_dtls">
 
                 <!-- psngr starts here -->
