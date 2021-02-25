@@ -49,7 +49,7 @@
 <!-- Departure Time Field -->
 <div class="form-group">
     {!! Form::label('departure_time', 'Departure Time:') !!}
-    <p>{{ $busallinfo->departure_time }}</p>
+    <p>{{ $businfo->departure_time }}</p>
 </div>
 
 
