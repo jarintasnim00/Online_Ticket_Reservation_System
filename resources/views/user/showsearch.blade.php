@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+<meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Online Ticket Reservation System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+
     </script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
 
     <style>
@@ -18,6 +24,7 @@
         .navbar-nav li a:hover {
             background: green;
         }
+
     </style>
     <style type="text/css">
         a {
@@ -27,8 +34,21 @@
         }
 
         a:hover {
-            background-color: #red;
+            background-color: red;
             color: black;
+        }
+
+        .confirmed{
+            background-color:#cc5560;
+        }
+        .reserved{
+            background-color:#fcba03;
+        }
+        .selected{
+            background-color:#54c581;
+        }
+        .available{
+            background-color:#d3d3d3;
         }
 
         .previous {
@@ -44,6 +64,7 @@
         .round {
             border-radius: 100%;
         }
+
     </style>
     <style type="text/css">
         .card {
@@ -115,6 +136,7 @@
         .card:hover>.back {
             transform: perspective(600px) rotateY(0deg);
         }
+
     </style>
 
 </head>
@@ -179,136 +201,240 @@
                 </thead>
                 <tbody id="">
                     {{-- @for ($index = 0; $index < count($result); $index++)  --}}
-                    @foreach ($result as $index=>$detail)
-                        <tr>
-                            <td>
-                                <ul>
-                                    <h4 style="color: #605CA8;"><b> {{$detail->name}}</b></h4>
+                    @foreach ($result as $index=>$detailnew)
 
-                                    {{$detail->bustyp->bustypename}}<br>
-                                    {{$detail->description}}
+                    <?php 
+                         $detail = $detailnew['bus_info']; 
+                         $booked_list = $detailnew['booked_list']; 
+                        
+                         $available_seat = $detail->seatcapacity - $booked_list->count()
 
+                        //  dd($detail->name);
+                    ?>
+                    <tr>
+                        <td>
+                            <ul>
 
-                                </ul>
-                            </td>
-                            <td class="tbl_col3 border-fix-seat" data-title="Dep. Time">
-                                {{$detail->departure_time}} <br>
+                                <h4 style="color: #605CA8;"><b> {{$detail->name}}</b></h4>
 
-                            </td>
-                            <td class="tbl_col3 border-fix-seat" id="bus-seat-capacity-greenline-{{$index}}"
-                                data-title="Dep. Time">
-                                {{$detail->seatcapacity}} <br>
-
-                            </td>
-                            <td class="tbl_col4 border-fix-seat" data-title="Arr. Time">
-                                {{$detail->fare}}
+                                {{$detail->bustyp->bustypename}}<br>
+                                {{$detail->description}}
 
 
-                                <p>
-             <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample"
-                                        role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        view seat
-                                    </a>
-                                </p>
-                                <div class="collapse" id="collapseExample">
+                            </ul>
+                        </td>
+                        <td class="tbl_col3 border-fix-seat" data-title="Dep. Time">
+                            {{$detail->departure_time}} <br>
 
-                                    <div class="card card-body">
+                        </td>
+                        <td class="tbl_col3 border-fix-seat" id="bus-seat-capacity-h-greenline-{{$detail->id}}" data-title="Seat-Capacity-" hidden>
+
+                            {{$available_seat}}
+                            
+
+                        </td>
+                        <td class="tbl_col3 border-fix-seat" id="bus-seat-capacity-greenline-{{$detail->id}}" data-title="Seat-Capacity">
+
+                            {{$available_seat}}
+                            
+
+                        </td>
+                        <td class="tbl_col3 border-fix-seat" id="bus-seat-fare-greenline-{{$detail->id}}"
+                            data-title="Fare">
+                            {{$detail->fare}} <br>
+
+                        </td>
+                        <td class="tbl_col4 border-fix-seat" data-title="Arr. Time">
+                            
+
+
+                            <p>
+                                <a class="btn btn-primary" data-bs-toggle="collapse"
+                                    href="#collapseExample-{{$detail->id}}" role="button" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    view seat
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample-{{$detail->id}}">
+
+                                <div class="card card-body">
 
 
 
-                                        <div class=" row">
-                                            <div class="col-md-6">
-                                                <h5 class="modal-title" id="choose seat">Choose your seat(s)</h5>
-                                                <table class="border border-dark p-2">
+                                    <div class=" row">
+                                        <div class="col-md-6">
+                                            
+                                            <div class="alert alert-danger alert-dismissible d-none">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                <strong>Danger!</strong> 
+                                                <p id="alert-message-box-{{$detail->id}}"></p>
+                                            </div>
+
+                                        
+                                            <h5 class="modal-title" id="choose seat">Choose your seat(s)</h5>
+
+                                            <table class="border border-dark p-2">
+                                                @php
+                                                $seatRow = ['A','B','C','D','E','F','G','H','I','J'];
+                                                @endphp
+                                                <tr style="height: 30px !important;">
+                                                    <td style="width: 50px; margin:5px">
+                                                        <div class="text-center p-10"
+                                                            style="display: none; background: #d3d3d3"></div>
+                                                    </td>
+                                                    <td style="width: 50px; margin:5px;">
+                                                        <div class="text-center p-10"
+                                                            style="display: none; background: #cc5560"></div>
+                                                    </td>
+                                                    <td style="width: 50px; margin:5px;">
+                                                        <div class="text-center p-10" style="display: none"></div>
+                                                    </td>
+                                                    <td style="width: 50px; margin:5px">
+                                                        <div class="text-center p-10"
+                                                            style="display: none; background: #54c581"></div>
+                                                    </td>
+                                                    <td style="width: 50px; margin:5px">
+                                                        <div class="text-center p-10 mb-3">
+                                                            <!-- <img src="{{asset('img/logo.png')}}" width="50%"
+                                                                alt=""> -->
+                                                                <i class="fa fa-lg fa-hdd-o" aria-hidden="true"></i>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @for ($i = 0; $i < 10; $i++) <tr style="height: 30px !important">
+                                                    {{-- @foreach ($result as $detail) --}}
+
+                                                    
                                                     @php
-                                                    $seatRow = ['A','B','C','D','E','F','G','H','I','J'];
+                                                    $arr_seat = $seatRow[$i].'1';
+                                                    
+                                                    $data = $detail->findTicket($detail->trip_id,strval($arr_seat));
+                                                    $status = 'none';
+                                                    foreach ($booked_list as $booked){
+                                                            
+                                                            if($booked->seat_name == $arr_seat){
+                                                                $status = $booked->status;
+                                                               
+                                                            }
+
+                                                    }
+                                            
+
                                                     @endphp
-                                                    <tr style="height: 30px !important;">
-                                                        <td style="width: 50px; margin:5px">
-                                                            <div class="text-center p-10"
-                                                                style="display: none; background: #d3d3d3"></div>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px;">
-                                                            <div class="text-center p-10"
-                                                                style="display: none; background: #cc5560"></div>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px;">
-                                                            <div class="text-center p-10" style="display: none"></div>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px">
-                                                            <div class="text-center p-10"
-                                                                style="display: none; background: #54c581"></div>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px">
-                                                            <div class="text-center p-10 mb-3">
-                                                                <img src="{{asset('img/icon_steering.png')}}"
-                                                                    width="50%" alt="">
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    @for ($i = 0; $i < 10; $i++) <tr style="height: 30px !important">
-                                                        {{-- @foreach ($result as $detail) --}}
 
-                                                        @php
-                                                        $arr_seat = $seatRow[$i].'1';
+                                                    <td style="width: 50px; margin:5px" data-trip="{{$detail}}"
+                                                        data-seat="{{$data}}">
+                                                        <button class="seat new-seat-{{$detail->id}} text-center {{$status == 'reserved' ? 'reserved' : ($status == 'confirmed' ? 'confirmed' : 'bg-white' ) }} " id="seat-pos-{{$arr_seat}}"
+                                                            title="{{$arr_seat}}" bus_id="{{$detail->id}}"
+                                                            fare="{{$detail->fare}}" data-toggle="tooltip" 
+                                                            
+                                                            style="width:40px;"
+                                                            status={{$status}}
+                                                            onclick="{{$status == 'reserved' || $status == 'confirmed' ? '' : 'chooseSeat(this)' }}" >
+                                                       
+                                                            {{$arr_seat}}
+                                                            
+                                                        </button>
+                                                    </td>
+                                                    @php
+                                                    $arr_seat = $seatRow[$i].'2';
+                                                    
+                                                    $data = $detail->findTicket($detail->trip_id,strval($arr_seat));
+                                                    $status = 'none';
+                                                    foreach ($booked_list as $booked){
+                                                            
+                                                            if($booked->seat_name == $arr_seat){
+                                                                $status = $booked->status;
+                                                               
+                                                            }
 
-                                                        $data = $detail->findTicket($detail->trip_id,strval($arr_seat));
+                                                    }
+                                            
 
-                                                        @endphp
-
-                                                        <td style="width: 50px; margin:5px" data-trip="{{$detail}}"
-                                                            data-seat="{{$data}}">
-                                                            <button class="text-center" id="seat-pos-{{$arr_seat}}"
-                                                                title="{{$arr_seat}}" bus-id="{{$index}}"
+                                                    @endphp
+                                                    <td style="width: 50px; margin:5px;"
+                                                        data-seat="{{$detail->findTicket($detail->trip_id,$seatRow[$i].'2')}}">
+                                                        <div>
+                                                            <button class="seat new-seat-{{$detail->id}} text-center {{$status == 'reserved' ? 'reserved' : ($status == 'confirmed' ? 'confirmed' : 'bg-white' ) }} "
+                                                                id="seat-pos-{{$seatRow[$i].'2'}}"
+                                                                title="{{$seatRow[$i].'2'}}" bus_id="{{$detail->id}}"
                                                                 fare="{{$detail->fare}}" data-toggle="tooltip"
-                                                                style="width:40px;background-color: white"
-                                                                onclick="chooseSeat(this)">
-                                                                {{$arr_seat}}
-                                                            </button>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px;"
-                                                            data-seat="{{$detail->findTicket($detail->trip_id,$seatRow[$i].'2')}}">
-                                                            <div>
-                                                                <button class="text-center seat"
-                                                                    id="seat-pos-{{$seatRow[$i].'2'}}"
-                                                                    title="{{$seatRow[$i].'2'}}" bus-id="{{$index}}"
-                                                                    fare="{{$detail->fare}}"
-                                                                    data-toggle="tooltip" onclick="chooseSeat(this)"
-                                                                    style="background-color:white;width:40px">{{$seatRow[$i].'2'}}</button>
-                                                            </div>
+                                                                status={{$status}}
+                                                                onclick="{{$status == 'reserved' || $status == 'confirmed' ? '' : 'chooseSeat(this)' }}"
+                                                                style="width:40px;">{{$seatRow[$i].'2'}}</button>
+                                                        </div>
 
-                                                        </td>
-                                                        <td style=" width: 50px; margin:5px;">
-                                                            <div class="text-center p-10" style="display: none">
-                                                                {{$seatRow[$i].'1'}}</div>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px"
-                                                            data-seat="{{$detail->findTicket($detail->trip_id,$seatRow[$i].'3')}}">
-                                                            <button class="text-center seat"
-                                                                id="seat-pos-{{$seatRow[$i].'3'}}"
-                                                                title="{{$seatRow[$i].'3'}}" bus-id="{{$index}}"
-                                                                fare="{{$detail->fare}}" data-toggle="tooltip"
-                                                                style="width:40px;background-color: white"
-                                                                onclick="chooseSeat(this)">{{$seatRow[$i].'3'}}</button>
-                                                        </td>
-                                                        <td style="width: 50px; margin:5px"
-                                                            data-seat="{{$detail->findTicket($detail->trip_id,$seatRow[$i].'4')}}">
+                                                    </td>
+                                                    <td style=" width: 50px; margin:5px;">
+                                                        <div class="text-center p-10" style="display: none">
+                                                            {{$seatRow[$i].'1'}}</div>
+                                                    </td>
+                                                    @php
+                                                    $arr_seat = $seatRow[$i].'3';
+                                                    
+                                                    $data = $detail->findTicket($detail->trip_id,strval($arr_seat));
+                                                    $status = 'none';
+                                                    foreach ($booked_list as $booked){
+                                                            
+                                                            if($booked->seat_name == $arr_seat){
+                                                                $status = $booked->status;
+                                                               
+                                                            }
 
-                                                            <button class="text-center  seat"
-                                                                id="seat-pos-{{$seatRow[$i].'4'}}"
-                                                                title="{{$seatRow[$i].'4'}}" bus-id="{{$index}}"
-                                                                fare="{{$detail->fare}}" data-toggle="tooltip"
-                                                                style="width:40px;background: white"
-                                                                onclick="chooseSeat(this)">{{$seatRow[$i].'4'}}</button>
-                                                        </td>
+                                                    }
+                                            
 
-                        </tr>
-                        {{-- @endforeach --}}
-                        @endfor
+                                                    @endphp
+                                                    <td style="width: 50px; margin:5px"
+                                                        data-seat="{{$detail->findTicket($detail->trip_id,$seatRow[$i].'3')}}">
+                                                        <button class="seat new-seat-{{$detail->id}} text-center {{$status == 'reserved' ? 'reserved' : ($status == 'confirmed' ? 'confirmed' : 'bg-white' ) }} "
+                                                            id="seat-pos-{{$seatRow[$i].'3'}}"
+                                                            title="{{$seatRow[$i].'3'}}" 
+                                                            bus_id="{{$detail->id}}"
+                                                            fare="{{$detail->fare}}" data-toggle="tooltip"
+                                                            style="width:40px;"
+                                                            status={{$status}}
+                                                            onclick="{{$status == 'reserved' || $status == 'confirmed' ? '' : 'chooseSeat(this)' }}"
+                                                            >{{$seatRow[$i].'3'}}</button>
+                                                    </td>
+                                                    @php
+                                                    $arr_seat = $seatRow[$i].'4';
+                                                    
+                                                    $data = $detail->findTicket($detail->trip_id,strval($arr_seat));
+                                                    $status = 'none';
+                                                    foreach ($booked_list as $booked){
+                                                            
+                                                            if($booked->seat_name == $arr_seat){
+                                                                $status = $booked->status;
+                                                               
+                                                            }
+
+                                                    }
+                                            
+
+                                                    @endphp
+                                                    <td style="width: 50px; margin:5px"
+                                                        data-seat="{{$detail->findTicket($detail->trip_id,$seatRow[$i].'4')}}">
+
+                                                        <button class="seat new-seat-{{$detail->id}} text-center {{$status == 'reserved' ? 'reserved' : ($status == 'confirmed' ? 'confirmed' : 'bg-white' ) }} "
+                                                            id="seat-pos-{{$seatRow[$i].'4'}}"
+                                                            title="{{$seatRow[$i].'4'}}" bus_id="{{$detail->id}}"
+                                                            fare="{{$detail->fare}}" data-toggle="tooltip"
+                                                            status={{$status}}
+                                                            style="width:40px;"
+                                                            onclick="{{$status == 'reserved' || $status == 'confirmed' ? '' : 'chooseSeat(this)' }}"
+                                                           
+                                                             >{{$seatRow[$i].'4'}}</button>
+                                                    </td>
+
+                    </tr>
+                    {{-- @endforeach --}}
+                    @endfor
             </table>
 
         </div>
-        <div class="col-md-6">
+        
+        <div class="col-md-6" id="booked-from-{{$detail->id}}">
             <div class="row">
                 <div class="col-sm-3">
                     <li style="background: #d3d3d3;text-align: center;">
@@ -336,7 +462,7 @@
                 </div>
             </div>
             <div class="clearfix">
-                <div id="tbl_price_details">
+                <div id="tbl_price_details-{{$detail->id}}">
                     <table class="table">
                         <thead>
                             <th>Seats</th>
@@ -359,7 +485,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="tickets_total" class="t_total">
+                <div id="tickets_total-{{$detail->id}}" class="t_total">
                     <p><b>Total: 0</b></p>
                 </div>
                 <form id="confirmbooking" method="post" action="/booking/bus/confirm">
@@ -375,21 +501,24 @@
                         </select>
 
                     </div>
-                    <input type="hidden" id="searchid" name="searchid">
-                    <a href="/booking" onclick="" class="btn btn-primary btn-sm" style="margin-top:20px;">Continue</a>
+                    <input type="hidden" id="bus_id" name="searchid">
+                    
+                    
                 </form>
+                <button  id="continue-btn-submit" class="btn btn-primary btn-sm" style="margin-top:20px;" onclick="booked_ticket('{{$detail->id}}')" >Continue</button>
             </div>
         </div>
+        
     </div>
-    <div class="modal-footer">
-        <p id="tripAlert" class="" style="color: #ccc; margin-top:15px; text-align:center;"><i
+    <div class="modal-footer text-left d-none">
+        <p id="tripAlert" class="alert-danger text-center" style="text-align:left;"><i
                 class="fa fa-exclamation-triangle"></i> <i>Due to traffic condition, the trip may get
                 canceled.</i> </p>
         <button type="button" class="btn btn-secondary btnClose" data-dismiss="modal">Close</button>
 
     </div>
     <!-- For test Form -->
-    <div class="container">
+    <div class="container d-none">
         <div class="row">
             <div class="col-md-6">
 
@@ -424,7 +553,7 @@
     </div>
     </td>
     </tr>
-     @endforeach
+    @endforeach
     {{-- @endfor --}}
     </tbody>
 
@@ -440,79 +569,95 @@
 
 
     <script type="text/javascript">
-        var green_color = 'rgb(0, 128, 0)'
-  var white_color = 'rgb(255, 255, 255)'
-  function chooseSeat(seatObj) {
-    console.log(seatObj);
-
-        var $seatObj = $(seatObj); 
-         
-        
-        console.log($seatObj.css("background-color"));
-        var sData = $seatObj[0].attributes[2].value;
-        if(green_color == $seatObj.css("background-color")){
-            $seatObj.css("background-color", "white");
-             $('#result-'+sData).remove();
-             doTicketsTotal(100);
-            var seat = 40-parseInt($('#tbl_seat_list tr').length);
-
-            $('td#bus-seat-capacity-greenline-'+$seatObj[0].attributes[3].value).text(seat);
-
-        }else{
-
-           $seatObj.css("background-color", "green");
-           
-          
-
-          $seatObj.attr("pointer-events", "none" );
-          
-          
-
-
-          var $seatTableBody = $('#tbl_price_details').find('table#tbl_seat_list').find('tbody:eq(0)');
-          
-          console.log(sData);
-          
-          var seat_name = 'A';
-          var tr = '<tr id="' + 'result-'+sData + '"><td width="115">' + sData + '</td><td class="seat_price" width="100">' + $seatObj[0].attributes[4].value + '</td><td>' + "Economy" + '<input type="hidden" name="'+ sData +'" value="'  + sData + '"/><input type="hidden" name="triproute[]" value="' + 1 + '"/>'+ '<input type="hidden" name="trip_id" value="'  + 1 + '" /></td></tr>';
-          $seatTableBody.append(tr);
-          doTicketsTotal(100);
-          // var seat = parseInt($('td#bus-seat-capacity-greenline-'+$seatObj[0].attributes[3].value).text());
-          var seat = 40 - parseInt($('#tbl_seat_list tr').length);
-
-          $('td#bus-seat-capacity-greenline-'+$seatObj[0].attributes[3].value).text(seat);
-          console.log($('td#bus-seat-capacity-greenline-'+$seatObj[0].attributes[3].value).text());
-        }
-        
-        
-    }
-
-    function doTicketsTotal(discountAmount)
     
-    {
-        var ticketsTotal = 0;
-        $('.seat_price').each(function(index){
+        var green_color = 'rgb(0, 128, 0)'
+        var white_color = 'rgb(255, 255, 255)'
+
+        function chooseSeat(seatObjNew) {
             
-            per_ticket_price = parseFloat($(this).text());
-            ticketsTotal += per_ticket_price
+            // console.log(seatObjNew);
+            var $seatObjNew = seatObjNew
+            var $seatObj = $(seatObjNew);
+            // console.log($seatObj);
+            var status =  $seatObjNew.attributes['status'].value
+            // console.log(status);
+            var sData = $seatObj[0].attributes[2].value;
+            if ($seatObjNew.classList.contains('selected')) {
+                $seatObjNew.classList.remove('selected');
+                $seatObjNew.classList.add('bg-white');
+                $('#result-' + sData).remove();
+                doTicketsTotal(100,$seatObj[0].attributes[3].value);
+                var seat_total = document.querySelector('td#bus-seat-capacity-h-greenline-'+$seatObj[0].attributes[3].value).firstChild.textContent;
+                var seat = parseInt(seat_total) - parseInt($('#tbl_price_details-'+$seatObj[0].attributes[3].value+' #tbl_seat_list tr').length);
 
-            console.log($(this).text())
-            console.log(ticketsTotal)
+                $('td#bus-seat-capacity-greenline-' + $seatObj[0].attributes[3].value).text(seat);
 
-            
-        });
+            } else {
 
-        $('div#tickets_total').html('<p><b>Total: ' + ticketsTotal + '</b></p>');
-         
-        // var $seatTableBody = $('#tbl_price_details').find('table#tbl_seat_list').find('tbody:eq(0)');
-        // var $seatTableTr = $seatTableBody.find('tr');
-        // $.each($seatTableTr, function(index, trObj) {
-        //     ticketsTotal += parseFloat($(trObj).find('td:eq(1)').text()) - discountAmount;
-        // });
-        // $('div#tickets_total').html('<p><b>Total: ' + ticketsTotal + '</b></p>');
-    }
+                if($seatObjNew.classList.contains('bg-white')){
+                    $seatObjNew.classList.remove('bg-white');
+                    $seatObjNew.classList.add('selected');
 
-      /* chooseSeat(seatObj) {
+                }
+                // $seatObj.css("background-color", "green");
+
+
+
+                $seatObj.attr("pointer-events", "none");
+
+                console.log($seatObj[0].attributes[3].value)
+
+                var $seatTableBody = $('#tbl_price_details-'+$seatObj[0].attributes[3].value).find('table#tbl_seat_list').find('tbody:eq(0)');
+
+                // console.log(sData);
+
+                var seat_name = 'A';
+                var tr = '<tr id="' + 'result-' + sData + '"><td width="115">' + sData +
+                    '</td><td class=" seat_price-'+$seatObj[0].attributes[3].value+' " width="100">' + $seatObj[0].attributes[4].value + '</td><td>' +
+                    "Economy" + '<input type="hidden" name="' + sData + '" value="' + sData +
+                    '"/><input type="hidden" name="triproute[]" value="' + 1 + '"/>' +
+                    '<input type="hidden" name="trip_id" value="' + 1 + '" /></td></tr>';
+                $seatTableBody.append(tr);
+                doTicketsTotal(100,$seatObj[0].attributes[3].value);
+                // var seat = parseInt($('td#bus-seat-capacity-greenline-'+$seatObj[0].attributes[3].value).text());
+                // console.log($seatObj[0].attributes[3].value)
+                var seat_total = document.querySelector('td#bus-seat-capacity-h-greenline-'+$seatObj[0].attributes[3].value).firstChild.textContent;
+                // console.log(seat_total)
+                var seat = parseInt(seat_total) - parseInt($('#tbl_price_details-'+$seatObj[0].attributes[3].value+' #tbl_seat_list tr').length);
+                
+                $('td#bus-seat-capacity-greenline-' + $seatObj[0].attributes[3].value).text(seat);
+                
+            }
+
+
+        }
+
+        function doTicketsTotal(discountAmount,bus_id)
+
+        {
+            var ticketsTotal = 0;
+            $('.seat_price-'+bus_id).each(function (index) {
+
+                per_ticket_price = parseFloat($(this).text());
+                ticketsTotal += per_ticket_price
+
+                // console.log($(this).text())
+                // console.log(ticketsTotal)
+
+
+            });
+
+            $('div#tickets_total-'+bus_id).html('<p><b>Total: ' + ticketsTotal + '</b></p>');
+
+            // var $seatTableBody = $('#tbl_price_details').find('table#tbl_seat_list').find('tbody:eq(0)');
+            // var $seatTableTr = $seatTableBody.find('tr');
+            // $.each($seatTableTr, function(index, trObj) {
+            //     ticketsTotal += parseFloat($(trObj).find('td:eq(1)').text()) - discountAmount;
+            // });
+            // $('div#tickets_total').html('<p><b>Total: ' + ticketsTotal + '</b></p>');
+        }
+
+        /* chooseSeat(seatObj) {
         console.log(seatObj);
         $('#seatError').addClass('hidden');
         var $seatObj = $(seatObj);
@@ -575,8 +720,62 @@
         }
     }*/
 
+    
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function booked_ticket(bus_id){
+           
+                var selected_seat = document.querySelectorAll(".selected.new-seat-"+bus_id);
+                var boarding_point = $("#boardingpoint").val();
+                console.log(selected_seat)
+                var bus_id = parseInt(bus_id);
+                var bus_id = parseInt(selected_seat[0].attributes['bus_id'].value) ;
+                console.log(selected_seat)
+                var arr = []
+                for(let i=0 ; i < selected_seat.length ; i++){
+                    // console.log(data)
+                    if(selected_seat[i].attributes['bus_id'].value == bus_id){
+                        arr.push(selected_seat[i].title)
+                    }
+                        
+                }
+                console.log(arr)
+
+                $.ajax({
+                type:'POST',
+                url:"{{ route('booking.post') }}",
+                data:{data_list:arr,bus_id:bus_id,boarding_point:boarding_point},
+                success:function(data){
+                    console.log(data)
+                    // window.location.href  = data.redirect;
+                    if(data['success']){
+                        
+                        window.location.href = data['redirect']
+                    }
+                    console.log(data['success']);
+
+                    // window.reload;
+                    // window.location.href = "{{ route('bokking.get') }}"
+                }
+                });
+
+            
+
+        }
+
+
+    
+       
+
 
     </script>
+
+
+
 
 
 

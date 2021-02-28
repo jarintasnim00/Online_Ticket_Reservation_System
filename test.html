@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Product Add</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{" assets "}}/css/app.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{" assets "}}/css/style.css">
+    <link rel="stylesheet" href="{{" assets "}}/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="{{" assets "}}/css/hierarchy-select.min.css">
+    <link rel="stylesheet" href="{{" assets "}}/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='{{"assets"}}/img/favicon.ico' />
+</head>
+
+<body>
+
+    <div class="header">
+        <div style="text-align: center;">
+            <h2> Distributor of Hamdard Laboratories(WAQF),Bangladesh</h2>
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+        <div class="col-11">
+            <div class="card px-5">
+                <div class="card-header justify-content-center">
+                    Invoice &nbsp <a href="/home" class="btn btn-primary">Back</a>
+                </div>
+                <div class="card-block clearfix">
+                    <div class="pull-left">
+                        <p> Invoice No : {{$id->id}}</p>
+                        <p>Show Room : {{$a}}</p>
+                        <p>MR : {{$b}}</p>
+                        <p>Address : {{$d}}</p>
+                        <p>Payment : {{$e}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+
+            <div class="card">
+                <div class="card-header">
+                    Product Table
+                </div>
+
+                <div class="card pull-right">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">
+                            Add Medicine
+                        </button>
+                    </div>
+
+
+                    <div class="card-body">
+                        <div class="print table-responsive">
+                            <table class="table table-hover table-bordered table-striped" id="order_table">
+                                <thead>
+                                    <tr>
+                                        <th>Medicine Name</th>
+
+                                        <th>Net Price</th>
+                                        <th>Quantity</th>
+                                        <th>Bonus</th>
+                                        <th>Gross Price</th>
+                                        <th>Total Net Price</th>
+                                        <th>Total Gross Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($product1 as $pro)
+                                    <tr>
+                                        <td>{{$pro->name}}</td>
+                                        <td>{{$pro->price}}</td>
+                                        <td>{{$pro->quantity}}</td>
+                                        <td>{{$pro->bonus}}</td>
+                                        <td>{{$pro->gross_price}}</td>
+                                        <td>{{$pro->total}}</td>
+                                        <td>{{$pro->quantity*$pro->gross_price}}</td>
+                                        <td><a href="/delete_pro1/{{$pro->id}}" class="btn btn-danger">Delete</a></td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    <a href="/finalInvoice" class="btn btn-primary">Invoice</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModal">Add Medicine</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="" action="/submit_daily1" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label>Medicine Name</label>
+                                <div class="dropdown hierarchy-select" id="example">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle text-dark" id="example-two-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                    <div class="dropdown-menu" aria-labelledby="example-two-button">
+                                        <div class="hs-searchbox">
+                                            <input type="text" class="form-control" autocomplete="off">
+                                        </div>
+                                        <div class="hs-menu-inner">
+                                            <a class="dropdown-item" data-value="" data-default-selected="" href="#">All
+                                                medicine</a> @foreach($product as $pro)
+
+                                            <a class="dropdown-item" data-value="{{$pro->id}}" href="#">{{$pro->name}}</a> @endforeach
+
+                                        </div>
+                                    </div>
+                                    <input class="d-none" name="name" id="name" sname="example_two" readonly="readonly" aria-hidden="true" type="text" />
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Medicine ID</label>
+                                <div class="input-group">
+                                    <select name="name" id="name" onchange="display()">
+                                        @foreach($product as $pro)
+                                        <option value="{{$pro->id}}">{{$pro->name}}</option>
+
+                                        @endforeach
+                                    </select>
+
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Quantity" name="quantity">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Bonus</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Bonus" name="bonus">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Unit Price</label>
+                                <div class="input-group" id="loaddata">
+                                    <input type="text" class="form-control" placeholder="price" name="price">
+                                </div>
+
+                                <input type="hidden" name="id" value="{{$id->id}}">
+                            </div>
+                            <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function display() {
+            var date = $('#name').val();
+            $.ajax({
+                url: "/getdata",
+                type: 'GET',
+                data: {
+                    date: date,
+                },
+                success: function(data) {
+                    // alert(data);  data:'_token = php echo csrf_token() ?>',
+                    $('#loaddata').html(data);
+                },
+                error: function() {
+                    alert('error');
+                }
+            });
+        }
+    </script>
+    <script src="assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="assets/bundles/prism/prism.js"></script>
+    <!-- Page Specific JS File -->
+    <!-- Template JS File -->
+    <script src="assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/hierarchy-select.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').hierarchySelect({
+                hierarchy: false,
+                width: 'auto'
+            });
+        });
+    </script>
+
+</body>
+
+</html>
