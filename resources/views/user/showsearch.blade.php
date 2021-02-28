@@ -502,6 +502,7 @@
 
                     </div>
                     <input type="hidden" id="bus_id" name="searchid">
+                    <input type="hidden" id="bus_journey_date_id" value="{{$bus_journey_date}}" name="bus_journey_date_name">
                     
                     
                 </form>
@@ -731,10 +732,12 @@
            
                 var selected_seat = document.querySelectorAll(".selected.new-seat-"+bus_id);
                 var boarding_point = $("#boardingpoint").val();
+                var bus_journey_date_id = $("#bus_journey_date_id").val();
                 console.log(selected_seat)
+                console.log(bus_journey_date_id)
                 var bus_id = parseInt(bus_id);
                 var bus_id = parseInt(selected_seat[0].attributes['bus_id'].value) ;
-                console.log(selected_seat)
+                
                 var arr = []
                 for(let i=0 ; i < selected_seat.length ; i++){
                     // console.log(data)
@@ -748,15 +751,19 @@
                 $.ajax({
                 type:'POST',
                 url:"{{ route('booking.post') }}",
-                data:{data_list:arr,bus_id:bus_id,boarding_point:boarding_point},
+                data:{data_list:arr,bus_id:bus_id,boarding_point:boarding_point,bus_journey_date:bus_journey_date_id},
                 success:function(data){
                     console.log(data)
                     // window.location.href  = data.redirect;
                     if(data['success']){
-                        
+                        console.log(data['success']);
                         window.location.href = data['redirect']
+                    }else if(data['error']){
+                       
+                        tempAlert("Some Error Happend",5000)
+                        
                     }
-                    console.log(data['success']);
+                    
 
                     // window.reload;
                     // window.location.href = "{{ route('bokking.get') }}"
@@ -767,10 +774,25 @@
 
         }
 
+        setInterval(pageReload, 1800000);
 
-    
+        function pageReload(){
+            location.reload();
+        }
+
+        function tempAlert(msg,duration)
+        {
+            var w = window.open('','','width=100,height=100')
+            w.document.write(msg)
+            w.focus()
+            setTimeout(function() {
+                w.close();
+                location.reload();
+            }, duration)
+        }
+
        
-
+    
 
     </script>
 

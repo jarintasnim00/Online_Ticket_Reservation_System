@@ -42,6 +42,7 @@ class BusController extends Controller
         $new_result = array();
 
         $over_booked_data = booked_seat::Where('status', '=', 'reserved')
+        ->Where('bus_journey_date', '=', $date)
         ->get();
 
         $date_to = Carbon::now();
@@ -59,6 +60,7 @@ class BusController extends Controller
 
         for ($x = 0; $x < $result->count(); $x++) {
           $booked_data = booked_seat::where('businfo_id', '=', $result[$x]->id)
+          ->Where('bus_journey_date', '=', $date)
           ->where(function($q) {
             $q->orWhere('status', '=', 'reserved')
             ->orWhere('status', '=', 'confirmed');
@@ -69,6 +71,7 @@ class BusController extends Controller
             "bus_info" => $result[$x],
             // "bus_info" => json_decode(json_encode($result[$x]), true),
             "booked_list" => $booked_data
+            
           ]);
         }
 
@@ -77,7 +80,7 @@ class BusController extends Controller
         $bustype = Bustype::all();
 
         // dd($result);
-        return view('user.showsearch', ['result' => $new_result, 'data' => $request, 'bustype' => $bustype]);
+        return view('user.showsearch', ['result' => $new_result, 'data' => $request, 'bustype' => $bustype,"bus_journey_date" => $date]);
     }
 
     public function seatView(Request $request)
@@ -114,6 +117,7 @@ class BusController extends Controller
                 $bookedSeat->seat_name = $data[$x];
                 $bookedSeat->businfo_id = $request['bus_id'];
                 $bookedSeat->boarding_point = $request['boarding_point'];
+                $bookedSeat->bus_journey_date = $request['bus_journey_date'];
                 $bookedSeat->demo_user_id = $demo_user_id;
                 $bookedSeat->updated_at = Carbon::now()->toDateTimeString();
                 $bookedSeat->save();
