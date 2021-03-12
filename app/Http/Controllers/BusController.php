@@ -130,7 +130,7 @@ else{
             $data = $request['data_list'];
             $demo_user_id = Str::random(100);
             // session(['demo_user_id' => $demo_user_id]);
-            session('key', 'default');
+            // session('key', 'default');
             // $request->session()->put('demo_user_id', $demo_user_id);
             
             
@@ -151,6 +151,8 @@ else{
             if($save_status == 'success'){
                 // return redirect('/booking')->with('flash_message_success', 'Booked-seat successfully!!');
                 // $r_url = route('bokking.get');
+                $request->session()->put('demo_user_id',$demo_user_id);
+                
                 $r_url = route('booking.get', ['data_list' =>json_encode($data), 'bus_id' => $request['bus_id'],'boarding_point'=>$request['boarding_point'],'demo_user_id'=>$demo_user_id]);
                 return response()->json(['success'=>'successfully reserved seat','data'=>$data,'redirect'=>$r_url]);
             }else{
@@ -201,10 +203,10 @@ else{
     public function payment_now(Request $request)
     {
 
-        dd($request->session()->get('key'));
-        if ($request->session()->exists('demo_user_id')) {
-               dd(session('demo_user_id')) ;
-            }
+        // dd($request->session()->get('key'));
+        // if ($request->session()->exists('demo_user_id')) {
+        //        dd(session('demo_user_id')) ;
+        //     }
 
         if ($request->ismethod('post')) {
             
@@ -286,7 +288,7 @@ else{
 
          $detail = Booked_seat::where('businfo_id', $request->businfo_id)->get();
 
-        
+       
         // dd($data );
         // return view('user.bookingbus');
         return view('user.bookingbus', ['data' => $request]);

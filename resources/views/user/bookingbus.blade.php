@@ -628,41 +628,6 @@
 
 
 
-<div class="col-md-4">
-                <div class="page-title" style="border-bottom: 2px solid black;">
-                    <h4>Journey Details</h4>
-                </div>
-                @php
-                $dep_date = "temp";
-                @endphp
-                @foreach ($detail as $dt)
-                <h4 class="text-danger">{{$dt->origin_city_name}} - {{$dt->destination_city_name}}</h4>
-                <input type="hidden" name="trip_id" value="{{$dt->trip_id}}">
-                <input type="hidden" name="origin_city_name" value="{{$dt->origin_city_name}}">
-                <input type="hidden" name="destination_city_name" value="{{$dt->destination_city_name}}">
-                <p>{{$dt->company_name}}</p>
-                <input type="hidden" name="company_name" value="{{$dt->company_name}}">
-                <p>{{$dt->departure_date}},{{$dt->departure_time}}</p>
-                <input type="hidden" name="departure_date" value="{{$dt->departure_date}}">
-                @php
-                $dep_date = $dt->economy_class_fare;
-                @endphp
-                <input type="hidden" name="departure_time" value="{{$dt->departure_time}}">
-                {{-- <p>{{date('d,Y',strtotime($dt->departure_date))}}</p> --}}
-                Seat NO(s):
-                @foreach ($seats as $key => $value)
-                <span class="text-danger">{{$value }} </span>
-                <input type="hidden" name="{{$value}}" value="{{$value}}">
-                @endforeach
-                <p>Boarding Point: <span>{{$boarding_point}}</span> </p>
-                <input type="hidden" name="boarding_point" value="{{$boarding_point}}">
-                @endforeach
-            </div>
-
-
-
-
-
 
 
 
