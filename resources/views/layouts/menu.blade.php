@@ -11,3 +11,7 @@
     <a class="nav-link" href="{{ route('businfos.index') }}"><i class="fas fa-building"></i><span>Businfos</span></a>
 </li>
 
+<li class="side-menus {{ Request::is('counters*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('counters.index') }}"><i class="fas fa-building"></i><span>Counters</span></a>
+</li>
+

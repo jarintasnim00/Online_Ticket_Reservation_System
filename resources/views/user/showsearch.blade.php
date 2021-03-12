@@ -108,7 +108,7 @@
             width: 100%;
         }
 
-        .sm {
+        .sm { 
             margin: 20px 0;
         }
 
@@ -197,6 +197,7 @@
                         <th>Departure Time </th>
                         <th>Seats Available</th>
                         <th>Fare</th>
+                        <th>Seat View</th>
                     </tr>
                 </thead>
                 <tbody id="">
@@ -224,7 +225,7 @@
                             </ul>
                         </td>
                         <td class="tbl_col3 border-fix-seat" data-title="Dep. Time">
-                            {{$detail->departure_time}} <br>
+                            {{$detail->departure_time}}<br>
 
                         </td>
                         <td class="tbl_col3 border-fix-seat" id="bus-seat-capacity-h-greenline-{{$detail->id}}" data-title="Seat-Capacity-" hidden>
@@ -492,14 +493,14 @@
                     @csrf
                     <div class="form-group">
                         <label for="bpt">Choose Boarding Point <span>*</span></label>
+                         
+                          <select  id="boardingpoint" location name="boardingpoint" class="form-control">
+                               @foreach($counter as $place)
 
+                <option value = "{{$place->id}}">{{$place->location}}</option>
 
-                        <select id="boardingpoint" location name="boardingpoint" class="form-control">
-                            <option value="0"> -- Boarding points -- </option>
-                            <option value="Mohakhali Bus Point (10:30 PM)">Mohakhali Bus Point (10:30 PM)
-                            </option>
-                        </select>
-
+                             @endforeach
+                            </select>
                     </div>
                     <input type="hidden" id="bus_id" name="searchid">
                     <input type="hidden" id="bus_journey_date_id" value="{{$bus_journey_date}}" name="bus_journey_date_name">
