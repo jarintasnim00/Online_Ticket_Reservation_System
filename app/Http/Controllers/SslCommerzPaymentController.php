@@ -207,24 +207,7 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
                 
-<<<<<<< HEAD
-                // if ($request->session()->has('demo_user_id')) {
-                //     echo "<br >Transaction is successfully Completed 1";
-                //     // dd($request->session()->get('demo_user_id')) ;
-                // }
-
                
-=======
-                // $k = self::new_payment()
-                 if ($request->session()->has('demo_user_id')) {
-                    dd($request->session()->get('demo_user_id')) ;
-                }
->>>>>>> origin/master
-
-                // session(['key' => 'value']);
-                // $value = session('key');
-                // echo $value;
-
                 return redirect('/payment_success')->with('flash_message_success', 'Transaction is successfully Completed !!');
                 echo "<br >Transaction is successfully Completed 5";
             } else {
@@ -286,7 +269,7 @@ class SslCommerzPaymentController extends Controller
         }
 
         
-        return view('user.success',['message' =>"Yoour Payment Successfuly Done"]);
+        return view('user.success',['message' =>"Your Payment Successfuly Done"]);
     }
 
     public function fail(Request $request)
@@ -387,7 +370,7 @@ class SslCommerzPaymentController extends Controller
     }
 
 
-    public function new_payment(Request $request)
+    public function add_new_payment(Request $request)
     {
         $all_status = [
             'reserved',
@@ -395,36 +378,35 @@ class SslCommerzPaymentController extends Controller
             'canceled'
         ];
 
-        // if (!$request->session()->has('demo_user_id')) {
-        //     return false;
-        // }
+        if ($request->ismethod('post')) {
+            $payment = new Paymentdetail;
+            $payment->payment_number = $request['payment_number'];
+            $payment->demo_user_id = $request['demo_user_id'];
+    
+            $payment->save();
 
-        // $over_booked_data = booked_seat::Where('status', '=', 'reserved')
-        // ->Where('demo_user_id', '=', $request->session()->get('demo_user_id')[0])
-        // ->get();
+            $over_booked_data = booked_seat::Where('status', '=', 'reserved')
+            ->Where('demo_user_id', '=', $request['demo_user_id'])
+            ->get();
 
-        // $date_to = Carbon::now();
+            $date_to = Carbon::now();
 
-        // for ($x = 0; $x < $over_booked_data->count(); $x++) {
-        //     $diff_in_minutes = $date_to->diffInMinutes($over_booked_data[$x]->created_at);
-        //     // array_push($time_over_array,$diff_in_minutes);
-        //     if($diff_in_minutes<=30){      
-        //         DB::table('booked_seats')
-        //         ->Where('status', '=', 'reserved')
-        //         ->Where('demo_user_id', '=', $request->session()->get('demo_user_id')[0])
-        //         ->update(['status' => $all_status[1]]);
+            for ($x = 0; $x < $over_booked_data->count(); $x++) {
+                $diff_in_minutes = $date_to->diffInMinutes($over_booked_data[$x]->created_at);
+                // array_push($time_over_array,$diff_in_minutes);
+                if($diff_in_minutes<=30){      
+                    DB::table('booked_seats')
+                    ->Where('status', '=', 'reserved')
+                    ->Where('demo_user_id', '=', $request['demo_user_id'])
+                    ->update(['status' => $all_status[1]]);
+                   
+                }
+                
+            }
 
-        //         $payment = new Paymentdetail;
-        //         $payment->payment_number = $payment_id;
-        //         $payment->demo_user_id = $request->session()->get('demo_user_id')[0]];
-
-        //         $payment->save();
-               
-        //     }
-            
-        // }
-
-        return true;
+            return redirect('/bus')->with('flash_message_success', 'Booked-seat successfully!!');
+        }
+        return view('user.index',['data' => $request]);
       
 
     }
