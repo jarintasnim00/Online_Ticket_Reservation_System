@@ -24,6 +24,7 @@ class sessionController extends Controller
 
 
 
+<<<<<<< HEAD
     public static function getSessionData(Request $request)
     {
        if($request->session()->has('demo_user_id'))
@@ -52,14 +53,33 @@ class sessionController extends Controller
        
        $request->session()->put('demo_user_id',$data);
       
+=======
+    public function getSessionData(Request $request)
+    {
+       if($request->session()->has('name'))
+       {
+            echo $request->session()->has('name');
+       }
+       else
+       {
+       	echo "No data in the session";
+       }
     }
 
-    //  public function deleteSessionData(Request $request)
-    // {
+    public function storeSessionData(Request $request)
+    {
        
-    //    $request->session()->forget('name');
-    //    echo "Data has been removed from the session";
-    // }
+       $request->session()->put('name','Jarin');
+       echo "Data has been added to the session";
+>>>>>>> origin/master
+    }
+
+     public function deleteSessionData(Request $request)
+    {
+       
+       $request->session()->forget('name');
+       echo "Data has been removed from the session";
+    }
 
     public static function setCookie(Request $request) {
       $minutes = 1;
