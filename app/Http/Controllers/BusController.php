@@ -13,6 +13,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\Counter;
+use App\Http\Controllers\sessionController ;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
+
 
 class BusController extends Controller
 {
@@ -130,7 +134,7 @@ else{
             $data = $request['data_list'];
             $demo_user_id = Str::random(100);
             // session(['demo_user_id' => $demo_user_id]);
-            session('key', 'default');
+            // session('key', 'default');
             // $request->session()->put('demo_user_id', $demo_user_id);
             
             
@@ -152,6 +156,13 @@ else{
                 // return redirect('/booking')->with('flash_message_success', 'Booked-seat successfully!!');
                 // $r_url = route('bokking.get');
                 $r_url = route('booking.get', ['data_list' =>json_encode($data), 'bus_id' => $request['bus_id'],'boarding_point'=>$request['boarding_point'],'demo_user_id'=>$demo_user_id]);
+
+                session(['name' => 'data new']);
+                $minutes = 30;
+                Cookie::queue(Cookie::make('demo_user_id', $demo_user_id, $minutes));
+                // sessionController::storeSessionData($request,$demo_user_id);
+               
+
                 return response()->json(['success'=>'successfully reserved seat','data'=>$data,'redirect'=>$r_url]);
             }else{
                 return response()->json(['error'=>'Traffic Problem Happend','data'=>$data]);
@@ -201,10 +212,10 @@ else{
     public function payment_now(Request $request)
     {
 
-        dd($request->session()->get('key'));
-        if ($request->session()->exists('demo_user_id')) {
-               dd(session('demo_user_id')) ;
-            }
+        // $request->session()->put('demo_user_id','100001010110101');
+        // if ($request->session()->has('demo_user_id')) {
+        //        dd($request->session()->has('demo_user_id')) ;
+        // }
 
         if ($request->ismethod('post')) {
             
@@ -284,12 +295,30 @@ else{
             $tripinfo->save();
         }
 
-         $detail = Booked_seat::where('businfo_id', $request->businfo_id)->get();
+        $detail = Booked_seat::where('businfo_id', $request->businfo_id)->get();
 
+       
+       
+        // $minutes = 10;
+        // Cookie::queue(Cookie::make('demo_user_id', 'MyValueDemo', $minutes));
+        // $value =  Cookie::get('name');
+        // echo $value;
+        // sessionController::setCookie($request);
+
+        // dd(sessionController::getCookie($request));
+        // $request->session()->put('demo_user_id','100001010110101');
+        // if ($request->session()->has('demo_user_id')) {
+        //     dd($request->session()->get('demo_user_id')) ;
+        // }
+        
+        
+        
+        // session(['key' => 'session  data ']);
+        
         
         // dd($data );
         // return view('user.bookingbus');
-        return view('user.bookingbus', ['data' => $request]);
+        return view('user.bookingbus', ['data' => $request,'detail'=>$detail]);
     }
 
 
@@ -334,5 +363,8 @@ else{
       
 
     }
+
+
+   
 
 }
