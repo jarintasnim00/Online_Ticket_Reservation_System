@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Http\Controllers\sessionController ;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
+use App\Models\Booked_seat;
+use Carbon\Carbon;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -26,7 +32,7 @@ class SslCommerzPaymentController extends Controller
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
        
-
+        
         $post_data = array();
         $post_data['total_amount'] = '10'; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
@@ -93,6 +99,7 @@ class SslCommerzPaymentController extends Controller
     public function payViaAjax(Request $request)
     {
 
+       
         # Here you have to receive all the order data to initate the payment.
         # Lets your oder trnsaction informations are saving in a table called "orders"
         # In orders table order uniq identity is "transaction_id","status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
@@ -160,11 +167,21 @@ class SslCommerzPaymentController extends Controller
             $payment_options = array();
         }
 
+
     }
 
     public function success(Request $request)
     {
-        echo "Transaction is Successful";
+        
+        // session(['key' => 'value']);
+        // $value = session('key');
+        // echo $value;
+        
+        $demo_user_id = Cookie::get('demo_user_id');
+        // $demo_user_id = 'iV2ZStgD0TA4Ih53gd7k8UIJBrWPqYpNDZsAnPUKrSER9CeHjZLBOAGom1GBy0xUxZ3kUd0mB5pBpixU0gpfLJr2sHWz0yCOuBUj';
+        // $demo_user_id = $request->cookie('demo_user_id');
+        
+        
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -190,13 +207,9 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
                 
-                // $k = self::new_payment()
-                 if ($request->session()->has('demo_user_id')) {
-                    dd($request->session()->get('demo_user_id')) ;
-                }
-
-
-                echo "<br >Transaction is successfully Completed";
+               
+                return redirect('/payment_success')->with('flash_message_success', 'Transaction is successfully Completed !!');
+                echo "<br >Transaction is successfully Completed 5";
             } else {
                 /*
                 That means IPN did not work or IPN URL was not set in your merchant panel and Transation validation failed.
@@ -217,7 +230,46 @@ class SslCommerzPaymentController extends Controller
             echo "Invalid Transaction";
         }
 
+        // $value = Cookie::get('name1');
+        // echo $value;
+        // echo '\nffff';
 
+    }
+
+    public function payment_success()
+    {   
+        $all_status = [
+            'reserved',
+            'confirmed',
+            'canceled'
+        ];
+        $demo_user_id = Cookie::get('demo_user_id');
+
+        if(!$demo_user_id){
+            return view('user.success',['message' =>"Some Payment Problem Happend"]);
+        }
+
+        $over_booked_data = booked_seat::Where('status', '=', 'reserved')
+        ->Where('demo_user_id', '=', $demo_user_id)
+        ->get();
+
+        $date_to = Carbon::now();
+
+        for ($x = 0; $x < $over_booked_data->count(); $x++) {
+            $diff_in_minutes = $date_to->diffInMinutes($over_booked_data[$x]->created_at);
+            // array_push($time_over_array,$diff_in_minutes);
+            if($diff_in_minutes<=30){      
+                DB::table('booked_seats')
+                ->Where('status', '=', 'reserved')
+                ->Where('demo_user_id', '=', $demo_user_id)
+                ->update(['status' => $all_status[1]]);
+                
+            }
+                
+        }
+
+        
+        return view('user.success',['message' =>"Your Payment Successfuly Done"]);
     }
 
     public function fail(Request $request)
@@ -318,7 +370,7 @@ class SslCommerzPaymentController extends Controller
     }
 
 
-    public function new_payment(Request $request)
+    public function add_new_payment(Request $request)
     {
         $all_status = [
             'reserved',
@@ -326,36 +378,35 @@ class SslCommerzPaymentController extends Controller
             'canceled'
         ];
 
-        // if (!$request->session()->has('demo_user_id')) {
-        //     return false;
-        // }
+        if ($request->ismethod('post')) {
+            $payment = new Paymentdetail;
+            $payment->payment_number = $request['payment_number'];
+            $payment->demo_user_id = $request['demo_user_id'];
+    
+            $payment->save();
 
-        // $over_booked_data = booked_seat::Where('status', '=', 'reserved')
-        // ->Where('demo_user_id', '=', $request->session()->get('demo_user_id')[0])
-        // ->get();
+            $over_booked_data = booked_seat::Where('status', '=', 'reserved')
+            ->Where('demo_user_id', '=', $request['demo_user_id'])
+            ->get();
 
-        // $date_to = Carbon::now();
+            $date_to = Carbon::now();
 
-        // for ($x = 0; $x < $over_booked_data->count(); $x++) {
-        //     $diff_in_minutes = $date_to->diffInMinutes($over_booked_data[$x]->created_at);
-        //     // array_push($time_over_array,$diff_in_minutes);
-        //     if($diff_in_minutes<=30){      
-        //         DB::table('booked_seats')
-        //         ->Where('status', '=', 'reserved')
-        //         ->Where('demo_user_id', '=', $request->session()->get('demo_user_id')[0])
-        //         ->update(['status' => $all_status[1]]);
+            for ($x = 0; $x < $over_booked_data->count(); $x++) {
+                $diff_in_minutes = $date_to->diffInMinutes($over_booked_data[$x]->created_at);
+                // array_push($time_over_array,$diff_in_minutes);
+                if($diff_in_minutes<=30){      
+                    DB::table('booked_seats')
+                    ->Where('status', '=', 'reserved')
+                    ->Where('demo_user_id', '=', $request['demo_user_id'])
+                    ->update(['status' => $all_status[1]]);
+                   
+                }
+                
+            }
 
-        //         $payment = new Paymentdetail;
-        //         $payment->payment_number = $payment_id;
-        //         $payment->demo_user_id = $request->session()->get('demo_user_id')[0]];
-
-        //         $payment->save();
-               
-        //     }
-            
-        // }
-
-        return true;
+            return redirect('/bus')->with('flash_message_success', 'Booked-seat successfully!!');
+        }
+        return view('user.index',['data' => $request]);
       
 
     }
