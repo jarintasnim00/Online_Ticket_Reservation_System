@@ -18,7 +18,7 @@
         @foreach($businfos as $businfo)
             <tr>
             <td>{{ $businfo->leaving_from }}-{{ $businfo->going_to }}</td>
-            <td>{{ $businfo->name }}</td>
+            <td>{{ $businfo->bus_owners->bus_name }}</td>
             <td>{{ $businfo->seattype }}</td>
             <td>{{ $businfo->bustyp->bustypename }}</td>
             <td>{{ $businfo->seatcapacity }}</td>

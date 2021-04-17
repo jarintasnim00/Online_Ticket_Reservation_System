@@ -8,6 +8,7 @@ use App\Repositories\BusinfoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\Bustype;
+use App\Models\Bus_owner;
 use Flash;
 use Response;
 
@@ -31,6 +32,7 @@ class BusinfoController extends AppBaseController
     public function index(Request $request)
     {
         $businfos = $this->businfoRepository->all();
+        //dd($businfos);
 
         return view('businfos.index')
             ->with('businfos', $businfos);
@@ -44,8 +46,10 @@ class BusinfoController extends AppBaseController
     public function create()
     {
          $places = Bustype::all();
+
+         $bus_owner = Bus_owner::all();
             
-        return view('businfos.create',compact('places'));
+        return view('businfos.create',compact('places','bus_owner'));
 
     }
 

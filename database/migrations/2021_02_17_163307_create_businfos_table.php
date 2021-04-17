@@ -22,7 +22,11 @@ class CreateBusinfosTable extends Migration
                     ->onDelete('cascade');  
             $table->string('leaving_from');
             $table->string('going_to');
-            $table->string('name');
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')
+                    ->references('id')
+                    ->on('bus_owners')
+                    ->onDelete('cascade'); 
             $table->string('seattype');
             $table->string('seatcapacity'); 
             $table->string('fare');

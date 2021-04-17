@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\sessionController;
+use App\Http\Controllers\TripcostController;
+use App\Http\Controllers\ReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,9 @@ use App\Http\Controllers\sessionController;
 */
 Route::get('/loginsession', function () {
     return view('session');
+});
+Route::get('/check', function () {
+    return view('myTestMail');
 });
 
 Route::get('/profile', function () {
@@ -47,7 +53,7 @@ Route::post('/booking/bus/pay-now', [App\Http\Controllers\BusController::class, 
 
 Route::post('/booking/bus/add-payment', [App\Http\Controllers\BusController::class, 'add_payment'])->name('payment.post');
 
-
+Route::get('/getdata1',"TripcostController@bdata1");
 
 
 Route::get('/admin', function () {
@@ -60,7 +66,16 @@ Route::get('/booking', function () {
 
 Route::get('/booking/{data_list}/{bus_id}/{boarding_point}/{demo_user_id}', [App\Http\Controllers\BusController::class, 'after_booking'])->name('booking.get');
 
-Route::post('/booking', [App\Http\Controllers\BusController::class, 'add_data'])->name('booking.post');;
+Route::post('/booking', [App\Http\Controllers\BusController::class, 'add_data'])->name('booking.post');
+
+
+Route::get('/booked_seat', [App\Http\Controllers\BusController::class, 'view']);
+
+Route::get('/ticket_sold_status', [App\Http\Controllers\StatusController::class, 'ticket_sold_status']);
+
+Route::get('/daily_sales_status', [App\Http\Controllers\StatusController::class, 'daily_sales_status']);
+
+Route::get('/payment_report', [App\Http\Controllers\StatusController::class, 'payment_report']);
 
 Route::post('/buses/search', [App\Http\Controllers\BusController::class, 'booked_seat']);
 
@@ -103,3 +118,16 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 // Route::get('/session/get', [sessionController::class, 'getSessionData'])->name('session.get');
 // Route::get('/session/set', [sessionController::class, 'storeSessionData'])->name('session.store');
 // Route::get('/session/delete', [sessionController::class, 'deleteSessionData'])->name('session.delete');
+
+Route::resource('tripcosts', App\Http\Controllers\TripcostController::class);
+Route::get('/tripcosts/pdf/{id}', [TripcostController::class, 'show00'])->name('tripcosts.pdf');
+
+
+//report 
+
+Route::get('/report', [App\Http\Controllers\ReportController::class, 'report_generate']);
+
+//dompdf generate
+Route::get('generate-pdf', [App\Http\Controllers\ReportController::class, 'generatePDF']);
+
+Route::resource('busOwners', App\Http\Controllers\Bus_ownerController::class);

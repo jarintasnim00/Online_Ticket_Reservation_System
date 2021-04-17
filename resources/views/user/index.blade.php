@@ -129,7 +129,7 @@ a:hover {
           <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Ticket Cancle</a>
+          <a class="nav-link active" aria-current="page" href="#">Ticket Cancel</a>
         </li>
       </ul>
     

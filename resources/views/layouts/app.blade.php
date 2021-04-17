@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+  
+
+
 
 @yield('page_css')
 <!-- Template CSS -->
@@ -62,6 +66,7 @@
 <script src="{{ asset('web/js/scripts.js') }}"></script>
 <script src="{{ mix('assets/js/profile.js') }}"></script>
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
 @yield('page_js')
 @yield('scripts')
 <script>
@@ -78,5 +83,11 @@
             }
         };
     }(jQuery));
+</script>
+
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
 </script>
 </html>

@@ -179,9 +179,9 @@
     </nav>
     <div style="background: #34AD00; padding: 20px; color: white;" class="container-fluid padding">
         <div class="row">
-            <div class="col-md-4 offset-md-2">Date of the Trip: &nbsp{{ date('Y-m-d') }}</div>
+           <div class="col-md-4 offset-md-2">Date of the Trip: &nbsp{{$data->current_date }}</div>
 
-            <div class="col-md-6">Buses from Chittagong to Cox's Bazar</div>
+          <div class="col-md-6">Buses from {{$data->leaving_from}} to {{$data->going_to}}</div>
 
         </div>
     </div>
@@ -225,7 +225,7 @@
                             </ul>
                         </td>
                         <td class="tbl_col3 border-fix-seat" data-title="Dep. Time">
-                            {{$detail->departure_time}}<br>
+                           <?php echo date('h:i A', strtotime($detail->departure_time)); ?><br>
 
                         </td>
                         <td class="tbl_col3 border-fix-seat" id="bus-seat-capacity-h-greenline-{{$detail->id}}" data-title="Seat-Capacity-" hidden>
@@ -331,7 +331,7 @@
                                                             
                                                             style="width:40px;"
                                                             status={{$status}}
-                                                            onclick="{{$status == 'reserved' || $status == 'confirmed' ? '' : 'chooseSeat(this)' }}" >
+                                                            onclick="{{$status == '  reserved' || $status == 'confirmed' ? '' : 'chooseSeat(this)' }}" >
                                                        
                                                             {{$arr_seat}}
                                                             
@@ -497,7 +497,7 @@
                           <select  id="boardingpoint" location name="boardingpoint" class="form-control">
                                @foreach($counter as $place)
 
-                <option value = "{{$place->id}}">{{$place->location}}</option>
+                <option value = "{{$place->location}}">{{$place->location}}</option>
 
                              @endforeach
                             </select>
@@ -642,7 +642,7 @@
 
                 per_ticket_price = parseFloat($(this).text());
                 ticketsTotal += per_ticket_price
-
+    
                 // console.log($(this).text())
                 // console.log(ticketsTotal)
 

@@ -136,6 +136,7 @@ else{
             // session(['demo_user_id' => $demo_user_id]);
             // session('key', 'default');
             // $request->session()->put('demo_user_id', $demo_user_id);
+            // $bus_info_data = Businfo::where('id', '=', $request['bus_id'])->get();
             
             
             $save_status = 'error';
@@ -144,6 +145,7 @@ else{
                 $bookedSeat->status = $all_status[0];
                 $bookedSeat->seat_name = $data[$x];
                 $bookedSeat->businfo_id = $request['bus_id'];
+                // $bookedSeat->price = (float)$bus_info_data->fare;
                 $bookedSeat->boarding_point = $request['boarding_point'];
                 $bookedSeat->bus_journey_date = $request['bus_journey_date'];
                 $bookedSeat->demo_user_id = $demo_user_id;
@@ -151,7 +153,7 @@ else{
                 $bookedSeat->save();
                 $save_status = 'success';
             }
-
+      
             if($save_status == 'success'){
                 // return redirect('/booking')->with('flash_message_success', 'Booked-seat successfully!!');
                 // $r_url = route('bokking.get');
@@ -214,17 +216,7 @@ else{
     public function payment_now(Request $request)
     {
 
-<<<<<<< HEAD
-        // $request->session()->put('demo_user_id','100001010110101');
-        // if ($request->session()->has('demo_user_id')) {
-        //        dd($request->session()->has('demo_user_id')) ;
-        // }
-=======
-        // dd($request->session()->get('key'));
-        // if ($request->session()->exists('demo_user_id')) {
-        //        dd(session('demo_user_id')) ;
-        //     }
->>>>>>> origin/master
+
 
         if ($request->ismethod('post')) {
             
@@ -288,8 +280,12 @@ else{
     public function after_booking(Request $request,$data_list,$bus_id,$boarding_point,$demo_user_id) {
 
         $data = json_decode($request['data_list'], true); 
+
         $bus_id = $request['bus_id'];
+          
         $boarding_point = $request['boarding_point'];
+           // dd($boarding_point);
+        
         $demo_user_id = $request['demo_user_id'];
         // dd($demo_user_id);
         if ($request->ismethod('post')) {
@@ -303,9 +299,10 @@ else{
 
             $tripinfo->save();
         }
+         
 
-<<<<<<< HEAD
-        $detail = Booked_seat::where('businfo_id', $request->businfo_id)->get();
+
+       // $detail = Booked_seat::where('businfo_id', $request->businfo_id)->get();
 
        
        
@@ -326,14 +323,16 @@ else{
         // session(['key' => 'session  data ']);
         
         
-=======
-         $detail = Booked_seat::where('businfo_id', $request->businfo_id)->get();
+
+         $detail = Booked_seat::where('demo_user_id', $demo_user_id)->get();
+
+     //dd($detail);
 
        
->>>>>>> origin/master
-        // dd($data );
-        // return view('user.bookingbus');
-        return view('user.bookingbus', ['data' => $request,'detail'=>$detail]);
+       $bus_info = Businfo::where('id', $bus_id)->get();
+       //dd($bus_info);
+
+        return view('user.bookingbus', ['data' => $request,'seat_info'=>$data,'detail'=>$detail,'bus_info'=> $bus_info]);
     }
 
 
@@ -377,6 +376,35 @@ else{
         return view('user.index',['data' => $request]);
       
 
+    }
+
+      public function view()
+    {
+       // $booked_seats = Booked_seat::all();
+
+   
+
+
+            $bookedseats = DB::table('businfos')
+            ->join('booked_seats', 'businfos.id', '=', 'booked_seats.businfo_id')
+            ->select(['businfos.*', 'booked_seats.bus_journey_date', DB::raw('COUNT(booked_seats.seat_name) as total_sales')])
+            ->groupBy('businfos.id')
+            ->get();
+
+
+          
+  
+             
+          
+        //    $booked_seats = Booked_seat::select([
+        // 'bus_journey_date', DB::raw('COUNT(id) as num_orders'), DB::raw('COUNT(seat_name) as total_sales')])
+        // ->groupBy('bus_journey_date')
+        //  ->get();
+  
+
+         return view('Booked_seat.show')->with('bookedseats', $bookedseats);
+
+         // return view("Booked_seat.show",compact("c","bookedseats"));
     }
 
 

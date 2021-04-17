@@ -42,7 +42,7 @@ class Businfo extends Model
         'bustyp_id',
         'leaving_from',
         'going_to',
-        'name',
+        'owner_id',
         'seattype',
         'seatcapacity',
         'fare',
@@ -61,7 +61,7 @@ class Businfo extends Model
         'bustyp_id' => 'integer',
         'leaving_from' => 'string',
         'going_to' => 'string',
-        'name' => 'string',
+        'owner_id' => 'integer',
         'seattype' => 'string',
         'seatcapacity' => 'string',
         'fare' => 'string',
@@ -78,7 +78,7 @@ class Businfo extends Model
         'bustyp_id' => 'required',
         'leaving_from' => 'required|string|max:255',
         'going_to' => 'required|string|max:255',
-        'name' => 'required|string|max:255',
+        'owner_id' => 'required',
         'seattype' => 'required|string|max:255',
         'seatcapacity' => 'required|string|max:255',
         'fare' => 'required|string|max:255',
@@ -97,6 +97,17 @@ class Businfo extends Model
     {
         return $this->belongsTo(\App\Models\Bustype::class, 'bustyp_id');
     }
+
+
+    public function bus_owners()
+    {
+        return $this->belongsTo(\App\Models\Bus_owner::class, 'owner_id');
+    }
+
+
+
+
+
     public function findTicket($trip_id, $seat_number)
     {
           return json_encode(["trip_id"=> $trip_id,"seat_number" => $seat_number]);

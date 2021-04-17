@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Booked_seat;
 use Carbon\Carbon;
+use Nexmo\Laravel\Facade\Nexmo;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendingEmail;
+use PDF;
+
 
 class SslCommerzPaymentController extends Controller
 {
@@ -104,25 +109,26 @@ class SslCommerzPaymentController extends Controller
         # Lets your oder trnsaction informations are saving in a table called "orders"
         # In orders table order uniq identity is "transaction_id","status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
-
+        $requestData = (array) json_decode($request->cart_json);
+        // dd($requestData);
         $post_data = array();
-        $post_data['total_amount'] = '10'; # You cant not pay less than 10
+        $post_data['total_amount'] =  $requestData['amount'];# You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = 'Customer Name';
+        $post_data['cus_name'] =  $requestData['cus_name'];
         $post_data['cus_email'] = 'customer@mail.com';
-        $post_data['cus_add1'] = 'Customer Address';
+        $post_data['cus_add1'] =  $requestData['cus_addr1'];
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
         $post_data['cus_state'] = "";
         $post_data['cus_postcode'] = "";
         $post_data['cus_country'] = "Bangladesh";
-        $post_data['cus_phone'] = '8801XXXXXXXXX';
+        $post_data['cus_phone'] = $requestData['cus_phone'];
         $post_data['cus_fax'] = "";
 
-        # SHIPMENT INFORMATION
+        # SHIPMENT INFORMATIONs
         $post_data['ship_name'] = "Store Test";
         $post_data['ship_add1'] = "Dhaka";
         $post_data['ship_add2'] = "Dhaka";
@@ -172,12 +178,14 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
-        
+         $card = $request->card_issuer;
+        $brand = $request->card_brand;
         // session(['key' => 'value']);
         // $value = session('key');
         // echo $value;
         
         $demo_user_id = Cookie::get('demo_user_id');
+        // dd($demo_user_id);
         // $demo_user_id = 'iV2ZStgD0TA4Ih53gd7k8UIJBrWPqYpNDZsAnPUKrSER9CeHjZLBOAGom1GBy0xUxZ3kUd0mB5pBpixU0gpfLJr2sHWz0yCOuBUj';
         // $demo_user_id = $request->cookie('demo_user_id');
         
@@ -186,16 +194,17 @@ class SslCommerzPaymentController extends Controller
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
         $currency = $request->input('currency');
+      
 
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
         $order_detials = DB::table('orders')
             ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+            ->select('transaction_id', 'status', 'currency', 'amount','payment_type','brand')->first();
 
         if ($order_detials->status == 'Pending') {
-            $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
+            $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency,$card,$brand);
 
             if ($validation == TRUE) {
                 /*
@@ -205,8 +214,8 @@ class SslCommerzPaymentController extends Controller
                 */
                 $update_product = DB::table('orders')
                     ->where('transaction_id', $tran_id)
-                    ->update(['status' => 'Processing']);
-                
+                    ->update(['status' => 'Trasction Done', 'payment_type' => $card,'brand' => $brand]);
+               
                
                 return redirect('/payment_success')->with('flash_message_success', 'Transaction is successfully Completed !!');
                 echo "<br >Transaction is successfully Completed 5";
@@ -238,12 +247,20 @@ class SslCommerzPaymentController extends Controller
 
     public function payment_success()
     {   
+
+          // Nexmo::message()->send([
+          //           'to'   => '+880 1705 948539',
+          //           'from' => '+880 1784 383053',
+          //           'text' => 'This is test message.'
+          //           ]); 
         $all_status = [
             'reserved',
             'confirmed',
             'canceled'
         ];
         $demo_user_id = Cookie::get('demo_user_id');
+
+        // dd($demo_user_id);
 
         if(!$demo_user_id){
             return view('user.success',['message' =>"Some Payment Problem Happend"]);
@@ -266,10 +283,26 @@ class SslCommerzPaymentController extends Controller
                 
             }
                 
-        }
+        } 
+
+         $data["email"] = "aatmaninfotech@gmail.com";
+        $data["title"] = "From ItSolutionStuff.com";
+        $data["body"] = "This is Demo";
+  
+        $pdf = PDF::loadView('myTestMail', $data);
+  
+        Mail::send('myTestMail', $data, function($message)use($data, $pdf) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"])
+                    ->attachData($pdf->output(), "text.pdf");
+        });
+  
+
+       
 
         
-        return view('user.success',['message' =>"Your Payment Successfuly Done"]);
+        
+        return redirect('/check')->with('flash_message_success', 'Your Payment Successfuly Done !!');
     }
 
     public function fail(Request $request)

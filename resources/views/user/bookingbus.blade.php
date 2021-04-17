@@ -26,6 +26,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Expires" CONTENT="-1">
+    <meta name="author" content="SSLCommerz">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="oS5-suFaVTWcXFd1w794UI_fZ5SXIzcQUnoW-kdhf9Y" />
     <link rel="shortcut icon" href="https://www.shohoz.com/img/favicon.ico" type="image/x-icon">
@@ -60,6 +61,27 @@
     <link href="/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="/css/theme.default.css" rel="stylesheet">
 
+
+ 
+  
+   
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
 
 
     <style>
@@ -304,47 +326,7 @@
 
     </style>
 
-    <div id="top_contact">
-        <ul class="list-inline">
-            <li id="help_line">16374</li>
-            <li style=" float: right;">
-                <div id="mobile-switch" style="">
-                    <a class="link-top" href="/bus-tickets" title="Bus Tickets">
-                        <div class="mobile-btn-padding-right"
-                            style="width:20%;float: left; height: 48px; background-color: #ffffff;"><i
-                                style="color:#079d49;" class="fa fa-bus"></i></div>
-                    </a>
-
-                    <a class="link-top" href="/launch" title="Launch Tickets">
-                        <div class="mobile-btn-padding-left" style="width:20%;float: left; height: 48px; "><i
-                                class="fa fa-ship"></i> </div>
-                    </a>
-                    <a class="link-top" href="/events" title="Event Tickets">
-                        <div class="mobile-btn-padding-left" style="width:20%;float: left; height: 48px;"><i
-                                class="fa fa-calendar"></i> </div>
-                    </a>
-                    <a class="link-top" href="/movies" title="Movie Tickets">
-                        <div class="mobile-btn-padding-left" style="width:20%;float: left; height: 48px;"><i
-                                class="fa fa-film"></i> </div>
-                    </a>
-
-                    <a class="link-top" href="https://rides.shohoz.com" title="Shohoz Rides">
-                        <div class="mobile-btn-padding-right" style="width:20%;float: right; height: 48px;"><i
-                                class="fa fa-motorcycle"></i> </div>
-                    </a>
-                </div>
-            </li>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-    <div class="clearfix visible-sm visible-xs hidden-md hidden-lg"></div>
-    <div class="top-info-bar mobile  hidden-md hidden-lg hide" style="padding:10px;">
-
-        <b style="color:red;">Please Note: Tickets of Bangladesh Vs England ODI - III at Chittagong will be available in
-            phases starting from 10:00 AM on 10th Oct 2016. To buy tickets, <a
-                href="/events/bangladesh-vs-england-series-2016" style="color:#000;text-decoration: underline;">Click
-                here</a></b>
-    </div>
+  
     <!-- top_contact ends here -->
 
     <style>
@@ -403,34 +385,7 @@
         <div class="row">
             <header class="new-header">
                 <input type="hidden" id="www-search-id" name="www-search-id" value="MA==">
-                <!-- Header Top Part Start Here -->
-                <div class="top-header hidden-xs hidden-sm">
-                    <div class="container-wrapper">
-                        <div class="site-wrapper clearfix">
-                            <div class="top-right">
-                                <ul>
-                                    <li><a title="Deals and Offers" href="https://www.shohoz.com/deals-and-offers">Deals
-                                            And Offers <label
-                                                style="width: 29px;background: #D74848;border-radius: 10px;font-size: 9px;margin-left: 2px;padding-left: 4px;padding-top: 2px;">NEW</label></a>
-                                    </li>
-                                    <li><a title="Claim Insurance" href="https://sunlifeinsbd.com/nirvar-jatra/"
-                                            target="_blank">Insurance Claim</a></li>
-                                    <li><a title="Cancel Ticket"
-                                            href="https://www.shohoz.com/booking/ticket/cancel">Cancel Ticket</a></li>
-                                    <li><a title="Bus Reservation"
-                                            href="https://www.shohoz.com/booking/bus-reservation">Bus Reservation</a>
-                                    </li>
-                                    <li><a class="fnt-normal" title="Contact Us"
-                                            href="https://www.shohoz.com/contact-us">Contact Us</a></li>
-                                    <li><a class="fnt-normal" title="Call: 16374" href="tel:16374"><span
-                                                class="icon-phone"></span> 16374</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Header Top Part End Here -->
+              
                 <div class="main-header">
                     <!-- Header Start Here -->
                     <div class="container-wrapper">
@@ -456,7 +411,7 @@
                                         <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Ticket Cancle</a>
+                                        <a class="nav-link active" aria-current="page" href="#">Ticket Cancel</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -472,22 +427,174 @@
     <div id="main_wrapper">
 
         <section id="content" class="container">
-            <form method="post" id="booknow" name="booknow" action="/booking/bus/pay-now"
+         <!--    <form method="post" id="booknow" name="booknow" action="/booking/bus/pay-now"
                 onkeypress="return event.keyCode != 13;">
-                @csrf
+                @csrf -->
 
                 <! -- psngr_dtls starts -->
                     <section id="psngr_dtls">
-
-                        <!-- psngr starts here -->
                         <div id="psngr" class="col-md-8">
 
                             <div class="p_head">
                                 <h5>Passenger Details</h5>
-                            </div>
+                            </div> 
+
+
+                         <form method="POST" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Full name</label>
+                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
+                             required>
+                        <!-- <div class="invalid-feedback">
+                            Valid customer name is required.
+                        </div> -->
+                    </div>
+                </div>
+
+                 
+
+               <div class="row">
+                    <div class="col-md-6 mb-3">
+                    <label for="mobile">Mobile</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+88</span>
+                        </div>
+                        <input type="text" name="customer_mobile" class="form-control" id="mobile" maxlength="11" placeholder="Mobile" required>
+                        <!-- <div class="invalid-feedback" style="width: 100%;">
+                            Your Mobile number is required.
+                        </div> -->
+                    </div>
+                </div>
+                 </div>
+
+               <div class="row">
+                    <div class="col-md-6 mb-3">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" name="customer_email" class="form-control" id="email"
+                           placeholder="Enter your email"  required>
+                   <!--  <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div> -->
+                </div>
+                 </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                           required>
+                  <!--   <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div> -->
+                </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+                
+                    <input type="hidden" value="{{(count($seat_info)*1200+49+10)}}" name="amount" id="total_amount" required/>
+                
+                </div>
+
+            
+
+<!-- 
+                <div class="mb-3">
+                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                </div> -->
+
+              <!--   <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100" id="country" required>
+                            <option value="">Choose...</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">State</label>
+                        <select class="custom-select d-block w-100" id="state" required>
+                            <option value="">Choose...</option>
+                            <option value="Dhaka">Dhaka</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                </div> -->
+                <hr class="mb-4">
+                <div id="insurance_part" style="padding:10px;">
+                                    <div class="alert alert-warning text-left" role="alert"><b>Insure your travel by
+                                            adding
+                                            ৳ 10 per passenger</b>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-left" style="margin-bottom:5px;">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="insurance" id="insurance_yes"
+                                                    class="insurance_option" value="insurance_yes"
+                                                    onChange="updateInsuranceAmount();" checked="checked"> Yes, secure
+                                                my trip with insurance. I agree to the <a
+                                                    href="/insurance-terms-conditions" target="_blank">Terms and
+                                                    Conditions</a>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12 text-left">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="insurance" id="insurance_no"
+                                                    class="insurance_option" value="insurance_no"
+                                                    onChange="updateInsuranceAmount();"> No, I don't
+                                                want insurance
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="amnt_pay">
+                                    <h3>Total Amount Payable: <span id="display_total_payable">৳ 749</span></h3>
+                                  
+                                   
+
+
+                                </div>
+
+                          
+                                <div style='margin-bottom:20px;' class="xs-only">
+                                    <img src='https://www.shohoz.com/img/offer/mobile_payment_373.png'
+                                        style="width:100%" border='0' class=''>
+                                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" id="sslczPayBtn"
+                        token="if you have any token validation"
+                        postdata=""
+                        order="If you already have the transaction generated for current order"
+                        endpoint="{{ url('/pay-via-ajax') }}"> Pay Now
+                </button>
+            </form>
+        </div>
+
+                        <!-- psngr starts here -->
+                      <!--   <div id="psngr" class="col-md-8">
+
+                            <div class="p_head">
+                                <h5>Passenger Details</h5>
+                            </div> -->
 
                             <!-- p_body starts here -->
-                            <div class="p_body">
+                       <!--      <div class="p_body">
 
                                 <ul class="list-inline clearfix">
                                     <li class="srch_input_wd">
@@ -519,10 +626,10 @@
                                         </label>
                                     </li>
 
-                                </ul>
+                                </ul> -->
 
                                 <!-- p_contact Starts here -->
-                                <div id="p_contact">
+                               <!--  <div id="p_contact">
 
                                     <div class="page_title">
                                         <h4 class="title_Ablack"><b>Contact Information</b></h4>
@@ -575,20 +682,20 @@
 
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <!-- p_contact Ends here -->
-                                <div class="clearfix"></div>
-                            </div>
+                             <!--    <div class="clearfix"></div>
+                            </div> -->
 
 
 
                             <!-- p_body ends here -->
-                            <div class="clearfix">&nbsp;</div>
+                           <!--  <div class="clearfix">&nbsp;</div> -->
                             <!-- Already have coupon voucher -->
                             <!-- End Already have coupon voucher -->
 
-
-                        </div>
+<!-- 
+                        </div> -->
                         <!-- psngr ends here -->
 
 
@@ -613,55 +720,60 @@
                             <ul>
                                 <!--//// For Eid  /////-->
                                 <li>
-                                    <h4>Dhaka - Chittagong</h4>
+                                    <h4>{{ $bus_info[0]->leaving_from }} - {{ $bus_info[0]->going_to }}</h4>
+                                </li>
+                                <li>
+                                    <h4>Bus:{{ $bus_info[0]->name }}</h4>
                                 </li>
                                 <!--//// For Eid  /////-->
-                                <li>Saintmartin Travels</li>
-                                <li>Sun, 28 Feb 2021, 08:30 PM</li>
-                                <li>Seat No(s): <span>J3</span></li>
-                                <li>Boarding at Arambag Bus Point , 08:30 PM</li>
+                                <li>Journey Date:<?php echo date('d-M-Y', strtotime($detail[0]->bus_journey_date));?>
+                                    
+                                </li>
+                               <!--  <li>Sun, 28 Feb 2021, 08:30 PM</li> -->
+                                  <li>Seat No(s):
+                           
+                           
+                                 @for ($index = 0; $index < count($seat_info); $index++)
+
+                                    <span style="font-size:16px; font-weight: bold;">{{ $seat_info[$index] }} 
+                                    </span>
+                                    @if($index < (count($seat_info)-1))
+                                   
+                                   
+                                    <span style="font-size:16px; font-weight: bold;">,
+                                    </span>
+                                   
+                               
+                                   @endif
+                                    @endfor
+                                </li>
+
+                                <li>Boarding at {{ $detail[0]->boarding_point }} Point</li>
+                                <!-- <li><?php echo date('h:i A', strtotime(($bus_info[0]->departure_time)));?> </li> -->
+
+                                <li>
+                                    
+            <tr>
+               
+                <td> Total Price:{{(count($seat_info)*1200)}}Tk</td>
+              
+            </tr>
+
+    
+                                </li>
                             </ul>
 
+
+
                         </aside>
-                        <!-- journey ends here -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div class="clearfix"></div>
-                    </section>
-                    <!-- psngr_dtls ends -->
-
-
-                    <!-- payment_dtls starts -->
-                    <section id="payment_dtls">
-
-                        <!-- fare starts here -->
-                        <aside id="fare" class="col-md-4 paside col-md-push-8" oncontextmenu="return false;">
+                         <aside id="fare" class="col-md-4 paside ">
 
                             <div class="page_title">
                                 <h4 class="title_Ablack"><b>Fare Details</b></h4>
                             </div>
 
                             <ul>
-                                <li>Ticket Price <span id="display_ticket_price">700</span></li>
+                                <li>Ticket Price <span id="display_ticket_price">{{(count($seat_info)*1200)}}</span></li>
                                 <li>Processing Fee <span id="display_shohoz_fee">49</span></li>
                                 <li id="bkash-fee" style="display:none">Processing Fee <span>0</span></li>
                                 <div class="col-md-12 hide"
@@ -680,19 +792,7 @@
                                     </div>
                                 </div>
 
-                                <li>
-                                    <input type="text" class="form-control coupon_input" id="offer_code"
-                                        name="offer_code" value="" placeholder="Enter Coupon Code">
-                                    <span>
-                                        <button id="btn_offer_new" type="button"
-                                            class="btn btn-default btn-block btn-sm btnSubmit coupon_button"
-                                            onclick="verifyCouponCode(); return false;">Apply</button>
-                                    </span>
-                                    <div class="error-message">
-                                        <p class="text-left text-success" id="coupon_success">Success!</p>
-                                        <p class="text-left coupon_error text-danger" id="coupon_error">Error!</p>
-                                    </div>
-                                </li>
+                            
 
                                 <li id="cc-fee" style="display:none">Bank Charges <span>0</span></li>
                                 <li id="fare-cod" style="display:none">Delivery Charge <span>0</span></li>
@@ -703,65 +803,86 @@
                             <input type="hidden" id="bKashRate" value="1.6" />
                             <input type="hidden" id="ccRate" value="0" />
                             <input type="hidden" id="mycashRate" value="1.5" />
-                            <input type="hidden" id="offerDiscount" value="100" />
+                            <input type="hidden" id="offerDiscount" value="0" />
                             <input type="hidden" id="loyaltyDiscount" value="" />
                             <input type="hidden" id="couponDiscount" value="" />
 
 
-                            <div class="col-md-12 bg-warning"
-                                style="padding:5px 5px;margin-top:20px;border:1px solid #079d49;">
-                                <b style="color:#fc0202;">Please note:</b> <br>
-                                <ol style="background-color: transparent;padding-left:15px;">
-                                    <li style="background-color: transparent;border-bottom: none;">The Processing Fee
-                                        and Bank
-                                        Charges are non-refundable.
-                                    </li>
-                                    <li style="background-color: transparent;border-bottom: none;">Delivery Charge for
-                                        areas in
-                                        Dhaka city has been revised to <b style="color:#fc0202;">Taka. 50</b> per
-                                        delivery.
-                                    </li>
-                                </ol>
-
-                            </div>
                         </aside>
 
+                    
+
+
+
+
+                        <div class="clearfix"></div>
+                    </section>
+                    <!-- psngr_dtls ends -->
+
+
+                    <!-- payment_dtls starts -->
+                    <section id="payment_dtls">
+
+                        <!-- fare starts here -->
+                        <!-- <aside id="fare" class="col-md-4 paside col-md-push-8" oncontextmenu="return false;">
+
+                            <div class="page_title">
+                                <h4 class="title_Ablack"><b>Fare Details</b></h4>
+                            </div>
+
+                            <ul>
+                                <li>Ticket Price <span id="display_ticket_price">{{(count($seat_info)*1200)}}</span></li>
+                                <li>Processing Fee <span id="display_shohoz_fee">49</span></li>
+                                <li id="bkash-fee" style="display:none">Processing Fee <span>0</span></li>
+                                <div class="col-md-12 hide"
+                                    style="background-color:#ffffff;padding:10px;border:1px solid #C4BFBF;text-align: center; margin:10px 0;">
+                                    <div class="col-md-4">
+                                        <img src="https://www.shohoz.com/img/gp/grameenphone.png" class="img-responsive"
+                                            style="margin:0 auto;" />
+                                    </div>
+                                    <div class="col-md-8" style="text-align:right;padding-right: 0;">
+                                        <b style="color:#0173BC;text-decoration: underline;">Get Promo Code via SMS
+                                            (Charges Tk.
+                                            2 + 3% SD & 15% VAT)</b><br />
+                                        <b>GP STAR</b> Subscribers - Type <b>SHOHOZ1</b> and send to <b>9000</b><br />
+                                        <b>GP Employees</b> - Type <b>DIS</b> &lt;space&gt; <b>SHOHOZ1</b> and send to
+                                        <b>333</b><br />
+                                    </div>
+                                </div>
+
+                            
+
+                                <li id="cc-fee" style="display:none">Bank Charges <span>0</span></li>
+                                <li id="fare-cod" style="display:none">Delivery Charge <span>0</span></li>
+                                <li>Discount<span id="display_discount">100</span></li>
+                                <li>Insurance Amount<span id="total_insurance_amount">10</span></li>
+                                <li><b>Total <span id="display_total">749</span></b></li>
+                            </ul>
+                            <input type="hidden" id="bKashRate" value="1.6" />
+                            <input type="hidden" id="ccRate" value="0" />
+                            <input type="hidden" id="mycashRate" value="1.5" />
+                            <input type="hidden" id="offerDiscount" value="0" />
+                            <input type="hidden" id="loyaltyDiscount" value="" />
+                            <input type="hidden" id="couponDiscount" value="" />
+
+
+                        </aside>
+ -->
                         <!-- fare ends here -->
 
                         <!-- psngr starts here -->
                         <div id="payment" class="col-md-8 col-md-pull-4">
 
-                            <div class="p_head">
+                           <!--  <div class="p_head">
                                 <h5>Payment Details</h5>
-                            </div>
+                            </div> -->
 
                             <!-- p_body starts here -->
                             <div class="p_body">
 
-                                <!--
-                        <div class="referrer_panel">
-                            <ul class="list-inline clearfix" >
-                                <li class="srch_input_wd">
-                                    <label>I have referral mobile number </label>
-                                    <input type="text" class="form-control" id="referral_number" name="referral_number" />
-                                </li>
-                                <li class="srch_input_dt">
-                                    <label>&nbsp;</label>
-                                    <button id="reffer_btn" type="button" class="btn btn-default btn-block btn-sm" onclick="applyRefferCode($(this)); return false;">Apply</button>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                            <div style="height:25px;"></div>
-                            <div class="clearfix"></div>
-                            <div>
-                                <p class="text-left text-success" id="reffer_success">Success!</p>
-                                <p class="text-left text-danger" id="reffer_error">Error!</p>
-                            </div>
-                        </div>
+                                
 
-                        -->
-
-                                <div id="insurance_part" style="padding:10px;">
+                              <!--   <div id="insurance_part" style="padding:10px;">
                                     <div class="alert alert-warning text-left" role="alert"><b>Insure your travel by
                                             adding
                                             ৳ 10 per passenger</b>
@@ -792,264 +913,37 @@
 
                                 <div id="amnt_pay">
                                     <h3>Total Amount Payable: <span id="display_total_payable">৳ 749</span></h3>
-                                    <!--                                    <div style="width:40%;margin:10px auto;padding:5px 10px;background-color: #97BE1A;color:#ffffff;font-size:19px;">You Save: <span id="spnSave" style="color:yellow;font-weight: bold;">৳. 100</span></div>-->
-                                    <div
-                                        style="color:#ffffff;background-color:#666666;margin:10px auto;padding:2px 5px;font-size:12px;font-weight: bold;width:20%;">
-                                        You Save: ৳.<span id="you_save_amount"> 100</span>
-                                    </div>
+                                  
+                                   
 
 
                                 </div>
 
-                                <div style='margin-bottom:20px;' class="md-only">
-                                    <img src='https://www.shohoz.com/img/offer/check_out_banner.png' border='0'
-                                        class=''>
-                                </div>
+                          
                                 <div style='margin-bottom:20px;' class="xs-only">
                                     <img src='https://www.shohoz.com/img/offer/mobile_payment_373.png'
                                         style="width:100%" border='0' class=''>
-                                </div>
+                                </div> -->
 
-                                <div id="amnt_pay" style="padding:10px;">
-                                    <br />
-                                    <span>By clicking on the, "Confirm Reservation / Proceed to Pay" box below, I have
-                                        read, acknowledged and agreed to the <a href="/terms-of-use"
-                                            target='_blank'>Terms of Use</a>, <a href="/privacy-policy"
-                                            target='_blank'>Privacy Policy</a> and <a href="/cancellation-and-refunds"
-                                            target='_blank'>Cancellation Policy</a> of Shohoz.com</span>
-                                    <br />
-                                </div>
-                                <!--                                <div class="checkbox ac-segment" >
-                                                            <label>
-                                                                <input type="checkbox" checked="true" id="is_policy"> I agree to the <a href="/terms-of-use">Terms of Use</a> and <a href="/cancellation-and-refunds">Cancellation Policy</a>
-                                                            </label>
-                                                        </div>-->
-                                <!-- payment_options Starts here -->
-                                <div id="payment_options">
+                                <div class="container">
+ 
 
+  
+   
+</div>
 
-
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs nav-tabs-payment">
-                                        <li class="active"><a href="#bKash" id="tbkash" data-toggle="tab">
-                                                Mobile Financial Service (MFS)
-                                            </a></li>
-                                        <li><a href="#all_banking" id="tall_banking" data-toggle="tab">Card or Internet
-                                                Banking</a></li>
-                                        <li><a href="#cod" id="tcod" data-toggle="tab">Cash on Delivery</a></li>
-                                    </ul>
-
-                                    <!-- Tab panes -->
+                             
                                     <div class="tab-content">
 
-                                        <div class="tab-pane active" id="bKash">
-                                            <div class="mid_cont_btn">
-                                                <select style="display:none;" class="form-control"
-                                                    id="selected_mobile_transaction" name="selected_mobile_transaction">
-                                                    <option value="1">bKash</option>
-                                                </select>
-
-                                            </div>
-
-                                            <div class="clear"></div>
-                                            <div class="v_gap">
-                                            </div>
-                                            <div class="clear"></div>
-
-                                            <div id="bKash-panel-info">
-
-                                                <div class="col-md-12 info">
-
-                                                    <div class="col-md-12">
-                                                        <link rel="stylesheet" type="text/css"
-                                                            href="https://www.shohoz.com/css/mfs.css?v=1.1.2" />
-                                                        <div class="row">
-                                                            <p>
-                                                                Please Select a Payment Method -
-                                                            </p>
-
-                                                            <div class="col-md-3 col-xs-6 bkash_container"
-                                                                id="bkash_payment">
-                                                                <p class="logo_svg">
-                                                                    <img src="https://www.shohoz.com/img/bkash_logo.png"
-                                                                        alt="bkash" />
-                                                                    <span>bKash</span>
-                                                                </p>
-
-                                                            </div>
-                                                            <div class="col-md-3  col-xs-6 logo_container"
-                                                                id="mfs_payment">
-                                                                <p class="logo_svg">
-                                                                    <img src="https://www.shohoz.com/img/rocket.svg"
-                                                                        alt="rocket" />
-                                                                    <span>rocket</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-3  col-xs-6 logo_container"
-                                                                id="mcash_id">
-                                                                <p class="logo_svg">
-                                                                    <img src="https://www.shohoz.com/img/mcash.svg"
-                                                                        alt="mcash" />
-                                                                    <span>MCash</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-3  col-xs-6 logo_container" id="my_cash">
-                                                                <p class="logo_svg">
-                                                                    <img src="https://www.shohoz.com/img/MyCash.png"
-                                                                        alt="MyCash" />
-                                                                    <span>MyCash</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-3  col-xs-6 logo_container" id="dmoney">
-                                                                <p class="logo_svg">
-                                                                    <img src="https://www.shohoz.com/img/dmoney.png"
-                                                                        alt="dmoney" />
-                                                                    <span>Dmoney</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-3  col-xs-6 logo_container" id="tcash">
-                                                                <p class="logo_svg">
-                                                                    <img src="https://www.shohoz.com/img/tcash.png"
-                                                                        alt="tcash" />
-                                                                    <span>t-cash</span>
-                                                                </p>
-                                                            </div>
-
-
-
-                                                        </div>
-                                                        <div id="waiting_time" class="display-none">
-
-                                                            <div style="margin-top: 16px">
-                                                                <i class="fa fa-info-circle"></i>
-                                                            </div>
-                                                            <div>
-                                                                <div
-                                                                    style="text-align: left; margin-left: 16px; margin-top: 26px;">
-                                                                    <p>
-                                                                        <b>Pay instantly using bKash Payment
-                                                                            Gateway.</b>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div id="fee_message" class="display-none">
-                                                            <div>
-                                                                <i class="fa fa-info-circle"></i>
-                                                            </div>
-                                                            <div>
-                                                                <div class="mfs_fee">
-                                                                    <p> Processing fee will be added with ticket fare
-                                                                        during
-                                                                        payment, that will vary depending on MFS</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="mid_cont_btn" id="mfs_payment_confirmation">
-                                                    <button type="submit" id="confirm_button" name="bkash" value="bkash"
-                                                        class="btn btn-default btn-block btn-md disabled">Confirm
-                                                        Reservation
-                                                    </button>
-                                                </div>
-                                                <div class="display-none" id="bkash_payment_confirmation">
-                                                    <div class="mid_cont_btn" style="width: 300px">
-                                                        <button type="submit" name="bkash-online" value="bkash-online"
-                                                            class="btn btn-default btn-block btn-md">
-                                                            Proceed to Pay
-                                                            <i class="fa fa-arrow-right"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div id="mycash-panel-info">
-                                                <div class="col-md-12 info">
-                                                    <div class="col-md-1">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </div>
-                                                    <div class="col-md-11">
-                                                        <div>
-                                                        </div>
-                                                        Your ticket(s) would be reserved and inactive for 30 minutes
-                                                        from the
-                                                        time of booking. Pay through
-                                                        MYCash to our <b>Merchant Account No: 01791715774</b> and
-                                                        confirm your
-                                                        transaction ID within 30 minutes to get the confirmed ticket.
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="mid_cont_btn">
-                                                    <button type="submit" name="mycash" value="mycash"
-                                                        class="btn btn-default btn-block btn-md">Confirm Reservation
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class="tab-pane" id="cod">
                                             <div class="col-md-12 info">
                                                 <div class="col-md-1">
                                                     <i class="fa fa-exclamation-triangle"></i>
                                                 </div>
-                                                <div class="col-md-11">
-                                                    <!-- Your journey time is too close. -->
-                                                    Cash on Delivery is not available at this moment. Try paying through
-                                                    <b>bKash</b>,
-                                                    Credit / Debit Cards or Internet banking.
-
-
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="tab-pane" id="all_banking">
-                                            <div class="col-md-12 info">
-                                                <div class="col-md-1">
-                                                    <i class="fa fa-info-circle"></i>
-                                                </div>
-                                                <div class="col-md-11">
-                                                    You would be redirected to a third party payment gateway where you
-                                                    can
-                                                    pay with your credit or debit cards. Your payment transactions are
-                                                    100%
-                                                    secure. On successful payment, you would get a confirmed ticket.
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="alert-warning col-md-12 hide"
-                                                style="border:1px solid red;padding:10px 5px;color:red;text-align: center;">
-                                                As, we are experiencing issues with payments through credit/ debit cards
-                                                or
-                                                internet banking, you are requested to prefer mobile banking or Cash on
-                                                Delivery as your payment method. We are constantly in touch with our
-                                                Payment
-                                                Gateway service provider to resolve the issue as soon as they can.
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-md-12 info">
-                                                <div class="processing_fee">
-                                                    <p>Processing fee will be added with ticket fare during payment,
-                                                        that
-                                                        will vary depending on the card</p>
-                                                </div>
-                                            </div>
-                                            <div class="mid_cont_btn">
-                                                <button name="pg" type="submit" value="pg"
-                                                    class="btn btn-default btn-block btn-md">Proceed to Pay
-                                                </button>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- payment_options Ends here -->
-
+                                                <div class="col-md-11"> -->
+                                                   
                                 <div class="clearfix"></div>
                             </div>
                             <!-- p_body ends here -->
@@ -1063,6 +957,110 @@
                     <input type="hidden" id="search_id" name="search_id" value="MA==">
                     <input type="hidden" id="www_search_id" name="www_search_id" value="51039893">
             </form>
+
+             <!--  <div class="row"> -->
+      
+     <!--   <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="firstName">Full name</label>
+                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
+                             required>
+                        <div class="invalid-feedback">
+                            Valid customer name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="mobile">Mobile</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+88</span>
+                        </div>
+                        <input type="text" name="customer_mobile" class="form-control" id="mobile" maxlength="11" placeholder="Mobile" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Your Mobile number is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" name="customer_email" class="form-control" id="email"
+                           placeholder="you@example.com"  required>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                           required>
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div> -->
+<!-- 
+                <div class="mb-3">
+                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                </div> -->
+
+              <!--   <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100" id="country" required>
+                            <option value="">Choose...</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">State</label>
+                        <select class="custom-select d-block w-100" id="state" required>
+                            <option value="">Choose...</option>
+                            <option value="Dhaka">Dhaka</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                </div> -->
+          <!--       <hr class="mb-4">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="same-address">
+                    <input type="hidden" value="1200" name="amount" id="total_amount" required/>
+                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
+                        address</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info">
+                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" id="sslczPayBtn"
+                        token="if you have any token validation"
+                        postdata=""
+                        order="If you already have the transaction generated for current order"
+                        endpoint="{{ url('/pay-via-ajax') }}"> Pay Now
+                </button>
+            </form>
+        </div> -->
+    </div>
+
             <style>
                 #operator_sec ul {
                     margin-left: 20px !important;
@@ -1092,10 +1090,7 @@
 
             <div id="media_sec" class="col-md-12 col-sm-12 col-xs-12 col-centered"
                 style="border:1px solid #dddddd;border-radius: 5px;margin: 20px 0 40px 0;padding:10px 20px 5px 10px;display:none;">
-                <!--    <div class="row">                -->
-
-                <!--        <hr style="border-color:#666;" />-->
-                <!--        <div> -->
+             
 
 
                 <ul class="col-xs-12 center" style="list-style: none;padding-left:0;">
@@ -1258,61 +1253,75 @@
 
     </style>
 
-    <script>
-        function couponPopup(flash_coupon_page) {
-            $.ajax({
-                type: "POST",
-                url: "/booking/bus/flash-coupon/",
-                data: {
-                    flash_coupon_page: flash_coupon_page
-                },
-                complete: function (xhr, textStatus) {
-                    //  popAlert(xhr.status);
-                }
-            }).done(function (data) {
-                //console.log(data);
-                //alert(data.flash_coupon)
-                if (data.coupon_code) {
-                    $('.modal').modal('hide');
-                    var html = '<div class="modal fade bs-example-modal-sm" id="couponPopup" role="dialog" >' +
-                        '<div class="modal-dialog modal-sm">' +
-                        '<div id="coupon-popup-' + data.flash_coupon_page +
-                        '" class="modal-content coupon-popup-content">'
-                        //+ '<div class="row text-right">'
-                        +
-                        '<button type="button" class="btn btn-sm pull-right" data-dismiss="modal">X</button>'
-                        //+ '</div>'
-                        +
-                        '<h3> </h3>' +
-                        '<h4 class="round hollow pull-right"><span>Coupon: </span><span class="coupon-code">' +
-                        data.coupon_code + '</span></h4>' +
-                        '<div class="clearfix">&nbsp;</div>'
-                        //+ '<div class="">' + body + '</div>'
-                        +
-                        '<br><br>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                    $('body').prepend(html);
-                    $('#couponPopup').modal({
-                        'backdrop': 'static'
-                    });
-                    //$('#couponPopup').modal();
-                    $('#couponPopup').addClass('animated bounce');
-                    $('#couponPopup').on('hidden.bs.modal', function (e) {
-                        $('#couponPopup').remove();
-                    });
-                }
-            });
-        }
-
-    </script>
-
-
-
 
     <script src="/js/modernizr.custom.2.6.2.min.js"></script>
     <script src="/js/blpriyojon.js"></script>
+
+<!-- // start script for sslcommerce -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+<!-- If you want to use the popup integration, -->
+<script>
+    var obj = {};
+    obj.cus_name = $('#customer_name').val();
+    obj.cus_phone = $('#mobile').val();
+    obj.cus_email = $('#email').val();
+    obj.cus_addr1 = $('#address').val();
+    obj.amount = $('#total_amount').val();
+
+     $('#customer_name').change(function(){
+
+       obj.cus_name = $('#customer_name').val();
+
+     });
+      $('#mobile').change(function(){
+
+        obj.cus_phone = $('#mobile').val();
+
+     });
+
+      $('#address').change(function(){
+
+        obj.cus_addr1 = $('#address').val();
+
+     });
+
+        $('#email').change(function(){
+
+        obj.cus_email = $('#email').val();
+
+     });
+
+
+
+     
+       
+
+    $('#sslczPayBtn').prop('postdata', obj);
+
+    (function (window, document) {
+        var loader = function () {
+            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+            // script.src = "https://seamless-epay.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR LIVE
+            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR SANDBOX
+            tag.parentNode.insertBefore(script, tag);
+        };
+
+        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+    })(window, document);
+</script>
+
+<!-- //end script for sslcommerce -->
+
 
     <script>
         var perTicketInsuranceAmount = 10;
@@ -2255,321 +2264,7 @@
         }
 
     </script>
-    <script>
-        function commonCouponReset() {
-            var is_coupon = true; //$('#is_coupon').is(':checked');
-            var offer_code = $('#offer_code').val();
-            var selected_tid = $('.nav-tabs-payment li.active').find("a").attr("id");
-            if (is_pp_enabled == 0) {
-                if (!is_coupon) {
-                    $('#card_name').prop('selectedIndex', 0);
-                    $('#master_card_name').val('');
-                    //$('#display_discount').html(0);
-                    $('#offer_code').val('');
-                    jQuery('.c_panel').show();
-                } else if (is_coupon && offer_code == jQuery('#mcCoupnTrigger').attr('mccoupon')) {
-
-                    $('#card_name').prop('selectedIndex', 0);
-                    $('#master_card_name').val('');
-                    $('#display_discount').html(0);
-                    $('#offer_code').val('');
-                    jQuery('.c_panel').show();
-                }
-            }
-        }
-
-        $('.nav-tabs-payment li').on('click', function () {
-            var selected_tab = $(this).find("a").attr("id");
-            if (selected_tab != 'tcredit') {
-                if (isgpportal != '1') {
-                    commonCouponReset();
-                }
-            }
-        });
-
-    </script>
-
-
-    <script>
-        var card_name = $('#card_name'); // Select Element
-        var bank_card_name = $('#bank_card_name'); // Select Element
-
-        var tcredit = $('#tcredit'); // TAB Element
-        var tinternet_banking = $('#tinternet_banking'); // TAB Element
-        var tcod = $('#tcod'); // TAB Element
-        var bKash = $('#tbkash');
-        // Credit Tab click event
-        tcredit.click(function () {
-            bank_card_name.prop('disabled', true);
-            card_name.prop('disabled', false);
-            $('#bank_card_name option').eq(0).prop('selected', true);
-        });
-        card_name.change(function () {
-            $('#ccRate').val(0);
-            percentage = ($(this).find(':selected').attr('percentage')) ? $(this).find(':selected').attr(
-                'percentage') : 0; //alert(percentage) ;
-            $('#ccRate').val(percentage);
-            //tcredit.click();
-            showCCFee('tcredit');
-        });
-        // Internet Bank Tab click event
-        tinternet_banking.click(function () {
-            card_name.prop('disabled', true);
-            bank_card_name.prop('disabled', false);
-            //card_name.find('option:first').attr('selected',true);
-            $('#card_name option').eq(0).prop('selected', true);
-        });
-        bank_card_name.change(function () {
-            $('#ccRate').val(0);
-            percentage = ($(this).find(':selected').attr('percentage')) ? $(this).find(':selected').attr(
-                'percentage') : 0; // alert(percentage) ;
-            $('#ccRate').val(percentage);
-            // alert($('#ccRate').val()) ;
-            //tinternet_banking.click();
-            showICCFee('tinternet_banking');
-        });
-        // CoD Tab click event
-        tcod.click(function () {
-
-            $('#ccRate').val(0);
-
-            $('#bank_card_name option').eq(0).prop('selected', true);
-            $('#card_name option').eq(0).prop('selected', true);
-        });
-        bKash.click(function () {
-            $('#ccRate').val(0);
-            // $('#bank_card_name').find('option:first').attr('selected','selected');
-            // $('#card_name').find('option:first').attr('selected','selected');
-            $('#bank_card_name option').eq(0).prop('selected', true);
-            $('#card_name option').eq(0).prop('selected', true);
-        });
-
-        function resetPaymentGateway() {
-            // $('#bank_card_name').find('option:first').attr('selected',true);
-            //  $('#card_name').find('option:first').attr('selected',true);
-            $('#bank_card_name option').eq(0).prop('selected', true);
-            $('#card_name option').eq(0).prop('selected', true);
-            $('#tbkash').click();
-        }
-
-    </script>
-
-    <script>
-        $('#city').change(function () {
-            $.get('/booking/trip/get-area/' + $(this).val()).done(function (e) {
-                $('#area').html(e);
-            });
-        });
-
-        function bigDiscount() {
-            var mob = /^[0-9]{1}[0-9]{10}$/;
-            if (mob.test($('input#pmobile').val()) == false) {
-                alert('Please enter correct mobile number');
-                $('input#pmobile').focus();
-                return false;
-            }
-            $('#is_coupon').prop("checked", true);
-            $('#offer_code').val(big_offer_coupon);
-            jQuery('.ac-segment').css("visibility", "hidden");
-            jQuery('#offer_code').show();
-            jQuery('#btn_offer').show();
-            jQuery('#btn_offer').click();
-        }
-
-        function reffrrerDiscount() {
-            var mob = /^[0-9]{1}[0-9]{10}$/;
-            if (mob.test($('input#pmobile').val()) == false) {
-                alert('Please enter correct mobile number');
-                $('input#pmobile').focus();
-                return false;
-            }
-            $('#is_coupon').prop("checked", true);
-            $('#offer_code').val("RE2015-INVALID");
-            jQuery('.ac-segment').css("visibility", "hidden");
-            jQuery('#offer_code').show();
-            jQuery('#btn_offer').show();
-            jQuery('#btn_offer').click();
-        }
-
-    </script>
-
-    <script type="text/javascript">
-        function sendCouponCode() {
-            $('#sendCode').prop('disabled', true);
-            var mobile_number = $('#pmobile').val();
-            //                var mob = /^[0-9]{1}[0-9]{10}$/;
-            //                if (mob.test($('input#pmobile').val()) == false)
-            //                {
-            //                    alert('Please enter correct mobile number');
-            //                    $('input#pmobile').focus();
-            //                    return false;
-            //                }
-            if (mobile_number.length != 8) {
-                alert('Please enter correct mobile number');
-                $('input#pmobile').focus();
-                return false;
-            }
-            $.get('/booking/trip/send-coupon-code/017' + mobile_number).done(function (e) {
-                $('#message').html(e['message']);
-                if (e['success'] == true) {
-                    $('#sendCode').prop('disabled', true);
-                    $('#pmobile').prop('readonly', true);
-                }
-            });
-        }
-
-        // blacklist email addresses
-        $('#pemail').on('blur', function () {
-            if (this.value == 'alamin@gmail.com') {
-                this.value = '';
-            }
-
-            return;
-        });
-
-        $(document).ready(function () {
-
-            var isCodOff = 0;
-            //console.log( isCodOff );
-            if (isCodOff == 1) {
-                $("#tcod").trigger("click");
-                $('#city option[value="1"]').attr("selected", "selected");
-                $.get('/booking/trip/get-area/1').done(function (e) {
-                    $('#area').html(e);
-                    $('#area option[value="4"]').attr("selected", "selected");
-                    $('#area option[value="4"]').attr("data-cod", "0");
-                    $('span#display_shohoz_fee').text(0);
-                    showCODForm($('#area'));
-                    $('#firstname').val('Mohsin');
-                    $('#lastname').val('Ali');
-                    $('#cod_addr1').val('Nabil Counter');
-                });
-            }
-        });
-
-    </script>
-
-    <!-- Modal -->
-    <div class="modal fade" id="web-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-        style="z-index:9999999">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="web-modal-title">Banglalink Prioyojon Prize Point Program</h4>
-                </div>
-                <div class="modal-body" id="web-modal-body">
-                    <div style="font-weight: bold;font-size: 16px;">Program Details:</div>
-                    <br />
-                    <div class="col-md-10">
-                        Banglalink Priyojon customers can redeem their priyojon points and pay for the bus tickets
-                        purchased through Shohoz.com. Based on the point redemption, customers get a voucher code on
-                        their mobile number, which can be used to avail a discount during the final payment. The point
-                        redemption happens as per the criteria mentioned below:
-                    </div>
-                    <div class="col-md-2" style="text-align: right;">
-                        <img src="https://www.shohoz.com/img/offer/priyojon-offer.png"
-                            class="img-responsive text-center" title="Banglalink Priyojon" alt="Banglalink Priyojon"
-                            style="border:0;" />
-                    </div>
-                    <div class="clearfix"></div>
-                    <p style="margin-top:20px;">
-                        <table class="table table-responsive table-bordered">
-
-                            <tr style="background-color:#dddddd;">
-                                <th>Voucher Description</th>
-                                <th>Voucher Value</th>
-                                <th>Points Required</th>
-                            </tr>
-                            <tr>
-                                <!--                <td><input type="radio" name="priyojon" value="PP50" redeem="650"  data-toggle="tooltip" data-placement="top" title="Redeem 650 points"></td>-->
-
-                                <td>A gift voucher worth ৳ 50 against 650 points</td>
-                                <td>৳ 50</td>
-                                <td>650</td>
-                            </tr>
-                            <tr>
-                                <!--                <td><input type="radio" name="priyojon" value="PP100"  redeem="1300"  data-toggle="tooltip" data-placement="top" title="Redeem 1300 points"></td>-->
-                                <td>A gift voucher worth ৳ 100 against 1300 points</td>
-                                <td>৳ 100</td>
-                                <td>1300</td>
-                            </tr>
-                            <tr>
-                                <!--                <td><input type="radio" name="priyojon" value="PP200"  redeem="2600"  data-toggle="tooltip" data-placement="top" title="Redeem 2600 points"></td>-->
-
-                                <td>A gift voucher worth ৳ 200 against 2600 points </td>
-                                <td>৳ 200</td>
-                                <td>2600</td>
-                            </tr>
-                            <tr>
-                                <!--                <td><input type="radio" name="priyojon" value="PP300" redeem="3900"   data-toggle="tooltip" data-placement="top" title="Redeem 3900 points"></td>-->
-
-                                <td>A gift voucher worth ৳ 300 against 3900 points</td>
-                                <td>৳ 300</td>
-                                <td>3900</td>
-                            </tr>
-                            <tr>
-                                <!--                <td><input type="radio" name="priyojon" value="PP500" redeem="6500"   data-toggle="tooltip" data-placement="top" title="Redeem 6500 points"></td>-->
-
-                                <td>A gift voucher worth ৳ 500 against 6500 points</td>
-                                <td>৳ 500</td>
-                                <td>6500</td>
-                            </tr>
-                        </table>
-                    </p>
-
-                    <div style="font-weight: bold;font-size: 16px;">How it works:</div>
-                    <br />
-
-                    <div class="col-md-12" style="margin-bottom: 20px;">
-                        <div class="col-md-1"
-                            style="background-color: #079d49;padding:10px;color:#ffffff;font-size:36px;font-weight: bold;text-align: center;border-radius: 50px;">
-                            1
-                        </div>
-                        <div class="col-md-11" style="padding-top:20px;">
-                            If you are a Banglalink Priyojon customer, enter your Banglalink mobile number in the
-                            <b>Mobile</b> field under <b>Contact Information</b> section and click on <b>Avail Priyojon
-                                Offer</b>. If Banglalink validates you
-                            as a valid Priyojon customer, you would get a <b>Priyojon Prize Point</b> section visible on
-                            the page.
-                        </div>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom: 20px;">
-                        <div class="col-md-1"
-                            style="background-color: #079d49;padding:10px;color:#ffffff;font-size:36px;font-weight: bold;text-align: center;border-radius: 50px;">
-                            2
-                        </div>
-                        <div class="col-md-11" style="padding-top:10px;">
-                            Check the redemption criteria including the gift voucher amount and points required to avail
-                            the discount. Choose how many points you want to redeem and click on <b>Get Gift Voucher
-                                Code</b> button. Your Priyojon Prize
-                            Point account would be checked for available points balance. If you have sufficient balance
-                            to redeem, a SMS would be sent to you with a gift voucher code.
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="col-md-1"
-                            style="background-color: #079d49;padding:10px;color:#ffffff;font-size:36px;font-weight: bold;text-align: center;border-radius: 50px;">
-                            3
-                        </div>
-                        <div class="col-md-11" style="padding-top:20px;">
-                            Enter the Voucher Code in the "Enter Voucher Code" field and click on "Verify Voucher Code"
-                            button. If your voucher code validation with Banglalink is successful, you would be offered
-                            a discount as per the voucher value in
-                            your total ticket price.
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
     <script>
         //alert(111);
         var travel_originid = "Dhaka";
@@ -2597,240 +2292,3 @@
 <!-- body ends -->
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="SSLCommerz">
-   
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-</head>
-<body class="bg-light">
-<div class="container">
-    <div class="py-5 text-center">
-        <h2>EasyCheckout (Popup) - SSLCommerz</h2>
-
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. We have provided this
-            sample form for understanding EasyCheckout (Popup) Payment integration with SSLCommerz.</p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Your cart</span>
-                <span class="badge badge-secondary badge-pill">3</span>
-            </h4>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Product name</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">1000</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">50</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">150</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (BDT)</span>
-                    <strong>1200 TK</strong>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Billing address</h4>
-            <form method="POST" class="needs-validation" novalidate>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="firstName">Full name</label>
-                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
-                               value="John Doe" required>
-                        <div class="invalid-feedback">
-                            Valid customer name is required.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="mobile">Mobile</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">+88</span>
-                        </div>
-                        <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
-                               value="01711xxxxxx" required>
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Your Mobile number is required.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" name="customer_email" class="form-control" id="email"
-                           placeholder="you@example.com" value="you@example.com" required>
-                    <div class="invalid-feedback">
-                        Please enter a valid email address for shipping updates.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St"
-                           value="93 B, New Eskaton Road" required>
-                    <div class="invalid-feedback">
-                        Please enter your shipping address.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                </div>
-
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                            <option value="">Choose...</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                            <option value="">Choose...</option>
-                            <option value="Dhaka">Dhaka</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="same-address">
-                    <input type="hidden" value="1200" name="amount" id="total_amount" required/>
-                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
-                        address</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info">
-                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
-                </div>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" id="sslczPayBtn"
-                        token="if you have any token validation"
-                        postdata="your javascript arrays or objects which requires in backend"
-                        order="If you already have the transaction generated for current order"
-                        endpoint="{{ url('/pay-via-ajax') }}"> Pay Now
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2019 Company Name</p>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Privacy</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-    </footer>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-
-<!-- If you want to use the popup integration, -->
-<script>
-    var obj = {};
-    obj.cus_name = $('#customer_name').val();
-    obj.cus_phone = $('#mobile').val();
-    obj.cus_email = $('#email').val();
-    obj.cus_addr1 = $('#address').val();
-    obj.amount = $('#total_amount').val();
-
-    $('#sslczPayBtn').prop('postdata', obj);
-
-    (function (window, document) {
-        var loader = function () {
-            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
-            // script.src = "https://seamless-epay.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR LIVE
-            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR SANDBOX
-            tag.parentNode.insertBefore(script, tag);
-        };
-
-        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
-    })(window, document);
-</script>
-</html>
-

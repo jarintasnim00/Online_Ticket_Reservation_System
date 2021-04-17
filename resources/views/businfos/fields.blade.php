@@ -27,11 +27,17 @@
    </select>
 </div>
 
-<!-- Name Field -->
+<!--Name-->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
+    {!! Form::label('bustyp_id', 'Bustyp Id:') !!}
+       <select name = "owner_id" class="form-control ">
+   @foreach($bus_owner as $owner)
+   <option value = "{{$owner->id}}">{{$owner->bus_name}}</option>
+
+   @endforeach
+   </select>
 </div>
+  
 
 <!-- Seattype Field -->
 <div class="form-group col-sm-6">

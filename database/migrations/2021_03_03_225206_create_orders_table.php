@@ -23,6 +23,11 @@ class CreateOrdersTable extends Migration
             $table->string('status')->nullable();
             $table->string('transaction_id')->nullable();
             $table->string('currency')->nullable();
+            $table->unsignedBigInteger('booked_seat_id');
+            $table->foreign('booked_seat_id')
+                    ->references('id')
+                    ->on('booked_seats')
+                    ->onDelete('cascade');
             $table->timestamps();
         });
     }
